@@ -57,4 +57,11 @@ public class BasePresenter<View extends IBaseView>  {
     public void getContext(Context context) {
         this.context = context;
     }
+
+    /**
+     * 如果需要进来就要联网请求数据，Pst 中覆写此方法
+     */
+    public void onTakeView() {
+
+    }
 }
