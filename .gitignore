@@ -43,6 +43,7 @@ proguard/
 captures/
 
 # Intellij
+.idea/
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/gradle.xml
@@ -64,3 +65,4 @@ freeline_project_description.json
 .idea/vcs.xml
 app/libs/
 app/src/main/res/drawable/
+.idea/codeStyleSettings.xml
