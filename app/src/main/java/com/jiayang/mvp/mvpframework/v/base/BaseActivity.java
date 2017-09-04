@@ -28,6 +28,7 @@ public abstract class BaseActivity <T extends BasePresenter> extends AppCompatAc
         inject(((MVPApp)getApplication()).getApiComponent());
         mPresenter.attachView(this);
         setContentView(getLayoutId());
+
         mPresenter.getContext(context);             //此方法是给P 传递 当前Act的上下文 必须写在getData前面
         mPresenter.getData(getIntent());
         mPresenter.onTakeView();
