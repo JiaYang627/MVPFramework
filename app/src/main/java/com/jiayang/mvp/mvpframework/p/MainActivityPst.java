@@ -26,8 +26,7 @@ public class MainActivityPst extends BasePresenter<ImainAcitivityView> {
 
     private LocationService locationService;
 
-    @Inject
-    WyNavigate wyNavigate;
+
 
     @Inject
     public MainActivityPst(ErrorListener errorListener,LocationService locationService) {
@@ -37,7 +36,7 @@ public class MainActivityPst extends BasePresenter<ImainAcitivityView> {
 
 
     public void show() {
-        //wyNavigate.goToTestActivity(context);  测试跳转 TestActivity 时打开即可
+//        wyNavigate.goToTestActivity(context);  测试跳转 TestActivity 时打开即可
 
         // ↑ 和 ↓ 两个必须 只存一个！！！！ 测试其中一个 另外一个必须注释掉
 

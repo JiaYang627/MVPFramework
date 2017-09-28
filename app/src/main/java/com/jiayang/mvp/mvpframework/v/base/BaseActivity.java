@@ -12,13 +12,16 @@ import com.jiayang.mvp.mvpframework.p.base.BasePresenter;
 
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 /**
  * Created by Administrator on 2017/8/31 0031.
  */
 
 public abstract class BaseActivity <T extends BasePresenter> extends AppCompatActivity implements IBaseView {
     protected Context context;
-
+    private Unbinder unbinder;
     @Inject
     protected T mPresenter;
     @Override
@@ -28,11 +31,16 @@ public abstract class BaseActivity <T extends BasePresenter> extends AppCompatAc
         inject(((MVPApp)getApplication()).getApiComponent());
         mPresenter.attachView(this);
         setContentView(getLayoutId());
-
+        unbinder = ButterKnife.bind(this);
         mPresenter.getContext(context);             //此方法是给P 传递 当前Act的上下文 必须写在getData前面
         mPresenter.getData(getIntent());
-        mPresenter.onTakeView();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.onTakeView();
     }
 
     @Override
@@ -50,5 +58,6 @@ public abstract class BaseActivity <T extends BasePresenter> extends AppCompatAc
         if (mPresenter != null) {
             mPresenter.detachView();
         }
+        unbinder.unbind();
     }
 }

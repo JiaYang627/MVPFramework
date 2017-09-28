@@ -2,12 +2,16 @@ package com.jiayang.mvp.mvpframework.p.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
+import com.jiayang.mvp.mvpframework.common.WyNavigate;
 import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorListener;
 import com.jiayang.mvp.mvpframework.v.base.IBaseView;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
+
+import javax.inject.Inject;
 
 
 /**
@@ -15,10 +19,14 @@ import java.lang.ref.WeakReference;
  */
 
 public class BasePresenter<View extends IBaseView>  {
+    @Inject
+    protected WyNavigate wyNavigate;
+
     protected View mView;
     protected Reference<View> reference;
     protected ErrorListener errorListener;
     protected Context context;
+    private boolean isViewAttach;
 
     public BasePresenter(ErrorListener errorListener) {
         this.errorListener = errorListener;
@@ -62,6 +70,19 @@ public class BasePresenter<View extends IBaseView>  {
      * 如果需要进来就要联网请求数据，Pst 中覆写此方法
      */
     public void onTakeView() {
+        if (!isViewAttach) {
+            isViewAttach = true;
+            onOnceTakeView();
+        }
+    }
+    /**
+     * 如果只需要第一次加载页面联网请求数据，Pst 中覆写次方法
+     */
+    public void onOnceTakeView() {
+
+    }
+
+    public void getArguments(Bundle bundle) {
 
     }
 }

@@ -19,6 +19,12 @@ public class MVPApp extends Application {
         mvpAppDeletage.onCreate();
     }
 
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        mvpAppDeletage.onTerminate();
+    }
+
     public ApiComponent getApiComponent(){
         return mvpAppDeletage.getApiComponent();
     }

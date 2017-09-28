@@ -49,4 +49,10 @@ public class MVPAppDeletage {
 
         return apiComponent;
     }
+
+    public void onTerminate() {
+        this.appComponent = null;
+        this.apiComponent = null;
+        this.appComponent = null;
+    }
 }
