@@ -85,4 +85,7 @@ public class BasePresenter<View extends IBaseView>  {
     public void getArguments(Bundle bundle) {
 
     }
+    public void onHiddenChanged(boolean hidden) {
+
+    }
 }
