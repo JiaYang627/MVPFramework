@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.jiayang.mvp.mvpframework.common.MVPApp;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.p.base.BasePresenter;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import javax.inject.Inject;
 
@@ -19,7 +20,7 @@ import butterknife.Unbinder;
  * Created by Administrator on 2017/8/31 0031.
  */
 
-public abstract class BaseActivity <T extends BasePresenter> extends AppCompatActivity implements IBaseView {
+public abstract class BaseActivity <T extends BasePresenter> extends RxAppCompatActivity implements IBaseView {
     protected Context context;
     private Unbinder unbinder;
     @Inject

@@ -1,6 +1,11 @@
 package com.jiayang.mvp.mvpframework.utils;
 
 
+import com.jiayang.mvp.mvpframework.v.base.IBaseView;
+import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle2.components.support.RxFragment;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -13,16 +18,16 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class RxUtils {
-//
-//    public static <T> LifecycleTransformer<T> bindToLifecycle(IBaseView view) {
-//        if (view instanceof RxAppCompatActivity) {
-//            return ((RxAppCompatActivity) view).bindToLifecycle();
-//        } else if (view instanceof RxFragment) {
-//            return ((RxFragment) view).bindToLifecycle();
-//        } else {
-//            throw new IllegalArgumentException("view isn't activity or fragment");
-//        }
-//    }
+
+    public static <T> LifecycleTransformer<T> bindToLifecycle(IBaseView view) {
+        if (view instanceof RxAppCompatActivity) {
+            return ((RxAppCompatActivity) view).bindToLifecycle();
+        } else if (view instanceof RxFragment) {
+            return ((RxFragment) view).bindToLifecycle();
+        } else {
+            throw new IllegalArgumentException("view isn't activity or fragment");
+        }
+    }
 
 
     public static <T> ObservableTransformer<T, T> getSchedulerTransformer(){

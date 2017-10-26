@@ -18,7 +18,7 @@ import javax.inject.Inject;
  * Created by Administrator on 2017/8/31 0031.
  */
 
-public class BasePresenter<View extends IBaseView>  {
+public class BasePresenter<View extends IBaseView> implements ErrorListener {
     @Inject
     protected WyNavigate wyNavigate;
 
@@ -86,6 +86,11 @@ public class BasePresenter<View extends IBaseView>  {
 
     }
     public void onHiddenChanged(boolean hidden) {
+
+    }
+
+    @Override
+    public void handleError(Throwable e) {
 
     }
 }

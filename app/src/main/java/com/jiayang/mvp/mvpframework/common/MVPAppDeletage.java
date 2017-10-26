@@ -9,11 +9,17 @@ import com.jiayang.mvp.mvpframework.m.component.DaggerAppComponent;
 import com.jiayang.mvp.mvpframework.m.model.ApiModule;
 import com.jiayang.mvp.mvpframework.m.model.AppModule;
 
+import javax.inject.Inject;
+
 /**
  * Created by Administrator on 2017/8/31 0031.
  */
 
 public class MVPAppDeletage {
+
+    @Inject
+    ActivityDelegate activityDelegate;
+
 
     private Application appContext;
     private ApiComponent apiComponent;

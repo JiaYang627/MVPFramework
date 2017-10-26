@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MVPFramework</string>
+
+
+    <string name="nonet">没有网络，请检查网络</string>
+    <string name="generic_server_down">网络数据异常，请重试</string>
+    <string name="request_time_out">网络请求超时，请重试</string>
+    <string name="network_hint">您的网络不给力，请检查网络设置</string>
+    <string name="fail_to_connected">网络连接失败</string>
+
 </resources>

@@ -43,7 +43,8 @@ public class MainActivityPst extends BasePresenter<ImainAcitivityView> {
         // 测试 手机归属地 ，LocationService.KEY 必须写死 只需更换第一个参数 即可
         locationService.getLocation("13838385438" ,LocationService.KEY)
                 .compose(RxUtils.<LocationBean>getSchedulerTransformer())
-                .subscribe(new RequestCallback<LocationBean>(errorListener) {
+                .compose(RxUtils.<LocationBean>bindToLifecycle(mView))
+                .subscribe(new RequestCallback<LocationBean>(this) {
                     @Override
                     public void onNext(@NonNull LocationBean locationBean) {
                         super.onNext(locationBean);
