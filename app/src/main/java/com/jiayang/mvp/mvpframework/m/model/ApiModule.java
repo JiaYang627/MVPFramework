@@ -10,6 +10,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.fastjson.FastJsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Created by Administrator on 2017/8/31 0031.
@@ -35,6 +36,7 @@ public class ApiModule {
         builder.client(client)
                 .baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(FastJsonConverterFactory.create());
         return builder.build();
     }

@@ -37,6 +37,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     compile 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
     compile 'com.squareup.okhttp3:okhttp:3.8.0'
     compile 'com.squareup.okio:okio:1.13.0'
     compile 'com.alibaba:fastjson:1.2.33'
