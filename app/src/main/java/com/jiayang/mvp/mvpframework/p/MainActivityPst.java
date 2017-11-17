@@ -8,6 +8,7 @@ import com.jiayang.mvp.mvpframework.common.WyNavigate;
 import com.jiayang.mvp.mvpframework.m.bean.LocationBean;
 import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorListener;
 import com.jiayang.mvp.mvpframework.m.rxhelper.RequestCallback;
+import com.jiayang.mvp.mvpframework.m.rxhelper.RetryWithDelay;
 import com.jiayang.mvp.mvpframework.m.service.LocationService;
 import com.jiayang.mvp.mvpframework.p.base.BasePresenter;
 import com.jiayang.mvp.mvpframework.utils.RxUtils;
@@ -42,6 +43,7 @@ public class MainActivityPst extends BasePresenter<ImainAcitivityView> {
 
         // 测试 手机归属地 ，LocationService.KEY 必须写死 只需更换第一个参数 即可
         locationService.getLocation("13838385438" ,LocationService.KEY)
+                .retryWhen(new RetryWithDelay(3 ,2))
                 .compose(RxUtils.<LocationBean>getSchedulerTransformer())
                 .compose(RxUtils.<LocationBean>bindToLifecycle(mView))
                 .subscribe(new RequestCallback<LocationBean>(this) {
