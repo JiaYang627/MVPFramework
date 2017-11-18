@@ -1,5 +1,6 @@
 package com.jiayang.mvp.mvpframework.v.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ import butterknife.Unbinder;
  */
 
 public abstract class BaseActivity <T extends BasePresenter> extends RxAppCompatActivity implements IBaseView {
-    protected Context context;
+    protected Activity context;
     private Unbinder unbinder;
     @Inject
     protected T mPresenter;

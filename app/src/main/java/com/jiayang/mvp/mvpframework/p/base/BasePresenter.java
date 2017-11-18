@@ -1,5 +1,6 @@
 package com.jiayang.mvp.mvpframework.p.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ public class BasePresenter<View extends IBaseView> implements ErrorListener {
     protected View mView;
     protected Reference<View> reference;
     protected ErrorListener errorListener;
-    protected Context context;
+    protected Activity context;
     private boolean isViewAttach;
 
     public BasePresenter(ErrorListener errorListener) {
@@ -62,7 +63,7 @@ public class BasePresenter<View extends IBaseView> implements ErrorListener {
 
     }
 
-    public void getContext(Context context) {
+    public void getContext(Activity context) {
         this.context = context;
     }
 
