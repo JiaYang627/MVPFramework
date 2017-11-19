@@ -94,4 +94,8 @@ public class BasePresenter<View extends IBaseView> implements ErrorListener {
     public void handleError(Throwable e) {
 
     }
+
+    public void onNewIntent(Intent intent) {
+
+    }
 }
