@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.jiayang.mvp.mvpframework.common.MVPApp;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.p.base.BasePresenter;
+import com.jiayang.mvp.mvpframework.utils.PermissionUtils;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import javax.inject.Inject;
@@ -49,6 +51,12 @@ public abstract class BaseActivity <T extends BasePresenter> extends RxAppCompat
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         mPresenter.onActivityResult(requestCode, requestCode, data);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionUtils.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     protected abstract void inject(ApiComponent apiComponent);
