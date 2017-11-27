@@ -11,6 +11,7 @@ import com.jiayang.mvp.mvpframework.common.MVPApp;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.p.base.BasePresenter;
 import com.trello.rxlifecycle2.components.support.RxAppCompatDialogFragment;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import javax.inject.Inject;
 
@@ -18,7 +19,7 @@ import javax.inject.Inject;
  * Created by 张 奎 on 2017-08-31 16:56.
  */
 
-public abstract class BaseFragment <T extends BasePresenter> extends RxAppCompatDialogFragment implements IBaseView{
+public abstract class BaseFragment <T extends BasePresenter> extends RxFragment implements IBaseView{
 
     @Inject
     protected T mPresenter;
