@@ -32,14 +32,17 @@ public class ToastUtils {
     }
 
     public static void initToast(int resId, Context context) {
-        if (context instanceof Activity || context instanceof FragmentActivity)
+        if (context instanceof Activity || context instanceof FragmentActivity){
             context = context.getApplicationContext();
+        }
         initToast(context.getString(resId), context, true);
     }
 
     public static void initToast(String msg, Context context, boolean isSingleton) {
-        if (context instanceof Activity || context instanceof FragmentActivity)
+        if (context instanceof Activity || context instanceof FragmentActivity){
+
             context = context.getApplicationContext();
+        }
         if (mToast != null && isSingleton) {
             mToast.setText(msg);
         } else {
@@ -91,7 +94,7 @@ public class ToastUtils {
     }
 
     private static Runnable mToastThread = new Runnable() {
-
+        @Override
         public void run() {
             mToast.show();
             mHandler.postDelayed(mToastThread, DEFAULT);// 每隔2秒显示一次

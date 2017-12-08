@@ -30,7 +30,9 @@ public class PermissionUtils {
     @TargetApi(Build.VERSION_CODES.M)
     public static void requestPermissions(Context context, int requestCode
             , String[] permissions, OnPermissionListener listener) {
-        if (permissions.length == 0 ) return;
+        if (permissions.length == 0) {
+            return;
+        }
         if (context instanceof Activity) {
             mOnPermissionListener = listener;
             List<String> deniedPermissions = getDeniedPermissions(context, permissions);
@@ -39,20 +41,22 @@ public class PermissionUtils {
                 ((Activity) context).requestPermissions(deniedPermissions
                         .toArray(new String[deniedPermissions.size()]), requestCode);
             } else {
-                if (mOnPermissionListener != null)
+                if (mOnPermissionListener != null) {
                     mOnPermissionListener.onPermissionGranted(Arrays.asList(permissions));
+                }
             }
         } else {
             throw new RuntimeException("Context must be an Activity");
         }
     }
 
-    public static boolean isNeedRequest(Context context, String... permissions){
+    public static boolean isNeedRequest(Context context, String... permissions) {
         return getDeniedPermissions(context, permissions).size() > 0;
     }
 
     /**
      * 判断某个权限是否被拒绝并不再提示；
+     *
      * @param activity
      * @param deniedPermissions
      * @return
@@ -66,6 +70,7 @@ public class PermissionUtils {
         }
         return false;
     }
+
     /**
      * 获取请求权限中需要授权的权限
      */
@@ -78,8 +83,6 @@ public class PermissionUtils {
         }
         return deniedPermissions;
     }
-
-
 
 
     /**
@@ -95,6 +98,7 @@ public class PermissionUtils {
     }
 
     //=====================================================================================
+
     /**
      * 请求权限结果，对应Activity中onRequestPermissionsResult()方法。
      */
@@ -121,9 +125,9 @@ public class PermissionUtils {
     }
 
 
-
-    public interface OnPermissionListener{
+    public interface OnPermissionListener {
         void onPermissionGranted(List<String> granted);
+
         void onPermissionDenied(List<String> denied);
     }
 }

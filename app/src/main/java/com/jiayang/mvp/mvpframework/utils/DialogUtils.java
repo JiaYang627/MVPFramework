@@ -48,7 +48,10 @@ public class DialogUtils {
     }
 
     public static void dismissDialogRequestPermission() {
-        if (dialog != null) dialog.dismiss();
+        if (dialog != null){
+            dialog.dismiss();
+        }
+
     }
 
 

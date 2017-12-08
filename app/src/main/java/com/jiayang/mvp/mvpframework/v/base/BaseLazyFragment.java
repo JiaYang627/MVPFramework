@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatDialogFragment;
 
 import com.jiayang.mvp.mvpframework.common.MVPApp;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
-import com.jiayang.mvp.mvpframework.p.base.LazyPresenter;
+import com.jiayang.mvp.mvpframework.p.base.BaseLazyPresenter;
 
 import javax.inject.Inject;
 
@@ -14,7 +14,7 @@ import javax.inject.Inject;
  * Created by 张 奎 on 2017-09-17 09:16.
  */
 
-public abstract class LazyFragment<T extends LazyPresenter> extends AppCompatDialogFragment implements IBaseView{
+public abstract class BaseLazyFragment<T extends BaseLazyPresenter> extends AppCompatDialogFragment implements IBaseView{
 
     @Inject
     protected T mPresenter;
@@ -45,8 +45,9 @@ public abstract class LazyFragment<T extends LazyPresenter> extends AppCompatDia
     }
 
     protected void onVisible() {
-        if (!presenterFactoryPrepared)
+        if (!presenterFactoryPrepared){
             return;
+        }
         lazyLoad();
     }
 

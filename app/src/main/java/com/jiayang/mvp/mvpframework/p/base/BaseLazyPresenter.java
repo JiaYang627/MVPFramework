@@ -8,13 +8,13 @@ import com.jiayang.mvp.mvpframework.v.base.IBaseView;
  * Created by 张 奎 on 2017-09-17 09:21.
  */
 
-public abstract class LazyPresenter<View extends IBaseView> extends BasePresenter<View> {
+public abstract class BaseLazyPresenter<View extends IBaseView> extends BasePresenter<View> {
 
     protected boolean isPrepared;
     protected boolean allowLoad = true; // 如果需要（重新）加载，这个变量设置为true
     private boolean mBoolean;
 
-    public LazyPresenter(ErrorListener errorListener) {
+    public BaseLazyPresenter(ErrorListener errorListener) {
         super(errorListener);
     }
 
