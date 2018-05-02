@@ -29,10 +29,10 @@ public class ApiModule {
     @Singleton
     @Provides
     public LocationService provideGoodsModel(Retrofit.Builder builder, OkHttpClient client) {
-        return creatRetrofit(builder , LocationService.BASE_URL ,client).create(LocationService.class);
+        return createRetrofit(builder , LocationService.BASE_URL ,client).create(LocationService.class);
     }
 
-    private Retrofit creatRetrofit(Retrofit.Builder builder, String baseUrl, OkHttpClient client){
+    private Retrofit createRetrofit(Retrofit.Builder builder, String baseUrl, OkHttpClient client){
         builder.client(client)
                 .baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

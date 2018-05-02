@@ -14,13 +14,13 @@ import javax.inject.Inject;
  * Created by 张 奎 on 2017-09-02 08:31.
  */
 
-public class TestActivityPrs extends BasePresenter<ItestActivityView> {
+public class TestActivityPst extends BasePresenter<ItestActivityView> {
 
 
     private LocationService locationService;
 
     @Inject
-    public TestActivityPrs(ErrorListener errorListener,LocationService locationService) {
+    public TestActivityPst(ErrorListener errorListener, LocationService locationService) {
         super(errorListener);
         this.locationService = locationService;
     }

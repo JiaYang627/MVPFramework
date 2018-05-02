@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.jiayang.mvp.mvpframework.common.WyNavigate;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -20,11 +22,13 @@ public class AppModule {
         this.mApplication = application;
     }
 
+    @Singleton
     @Provides
     public Application provideApplication() {
         return mApplication;
     }
 
+    @Singleton
     @Provides
     WyNavigate provideWyNavigate() {
         return new WyNavigate();
