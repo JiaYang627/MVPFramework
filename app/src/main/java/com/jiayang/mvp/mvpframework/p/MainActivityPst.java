@@ -39,6 +39,7 @@ public class MainActivityPst extends BasePresenter<ImainAcitivityView> {
 //        测试跳转 TestActivity 时打开即可
 //        wyNavigate.goToTestActivity(context);
 
+
         // ↑ 和 ↓ 两个必须 只存一个！！！！ 测试其中一个 另外一个必须注释掉
 
         // 测试 手机归属地 ，LocationService.KEY 必须写死 只需更换第一个参数 即可
