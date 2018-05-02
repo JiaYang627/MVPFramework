@@ -32,6 +32,7 @@ public class MainActivityPst extends BasePresenter<ImainAcitivityView> {
 //        测试跳转 TestActivity 时打开即可
         wyNavigate.goToTestActivity(context);
         LogUtils.e("zk----Test");
+        LogUtils.e("zk----Test");
 
         // ↑ 和 ↓ 两个必须 只存一个！！！！ 测试其中一个 另外一个必须注释掉
 
