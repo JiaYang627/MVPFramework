@@ -10,7 +10,6 @@ import com.jiayang.mvp.mvpframework.m.rxhelper.RequestCallback;
 import com.jiayang.mvp.mvpframework.m.rxhelper.RetryWithDelay;
 import com.jiayang.mvp.mvpframework.m.service.LocationService;
 import com.jiayang.mvp.mvpframework.p.base.BasePresenter;
-import com.jiayang.mvp.mvpframework.utils.LogUtils;
 import com.jiayang.mvp.mvpframework.utils.RxUtils;
 import com.jiayang.mvp.mvpframework.v.iview.ImainAcitivityView;
 
