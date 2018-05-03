@@ -5,7 +5,9 @@ import android.content.Intent;
 import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorListener;
 import com.jiayang.mvp.mvpframework.m.service.LocationService;
 import com.jiayang.mvp.mvpframework.p.base.BasePresenter;
+
 import com.jiayang.mvp.mvpframework.utils.LogUtils;
+
 import com.jiayang.mvp.mvpframework.v.iview.ImainAcitivityView;
 
 import javax.inject.Inject;
