@@ -37,7 +37,7 @@ public class ClientModule {
 
     @Singleton
     @Provides
-    OkHttpClient.Builder provideOkhttpBuilder() {
+    OkHttpClient.Builder provideOkHttpBuilder() {
         return new OkHttpClient.Builder();
     }
 
@@ -78,7 +78,7 @@ public class ClientModule {
 
     @Singleton
     @Provides       //network拦截器
-    Interceptor provodeInterceptor(){
+    Interceptor provideInterceptor(){
         return new StethoInterceptor();
     }
 
@@ -105,7 +105,7 @@ public class ClientModule {
 
     @Singleton
     @Provides
-    ErrorListener provideErrorHanler(){
+    ErrorListener provideErrorHandler(){
         return new RxErrorHandler();
     }
 }
