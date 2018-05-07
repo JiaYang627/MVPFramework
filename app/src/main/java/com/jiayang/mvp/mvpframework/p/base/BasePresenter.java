@@ -1,11 +1,11 @@
 package com.jiayang.mvp.mvpframework.p.base;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.jiayang.mvp.mvpframework.common.WyNavigate;
+import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorHelper;
 import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorListener;
 import com.jiayang.mvp.mvpframework.v.base.IBaseView;
 
@@ -91,7 +91,11 @@ public class BasePresenter<View extends IBaseView> implements ErrorListener {
     }
 
     @Override
-    public void handleError(Throwable e) {
+    public void handleError(Throwable throwable) {
+        ErrorHelper.onError(context,throwable);
+        handleNetError();
+    }
+    protected void handleNetError() {
 
     }
 

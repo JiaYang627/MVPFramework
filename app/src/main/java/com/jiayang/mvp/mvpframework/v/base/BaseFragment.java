@@ -1,8 +1,8 @@
 package com.jiayang.mvp.mvpframework.v.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import com.jiayang.mvp.mvpframework.common.MVPApp;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.p.base.BasePresenter;
-import com.trello.rxlifecycle2.components.support.RxAppCompatDialogFragment;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import javax.inject.Inject;
@@ -52,5 +51,16 @@ public abstract class BaseFragment <T extends BasePresenter> extends RxFragment 
     public void onResume() {
         super.onResume();
         mPresenter.onTakeView();
+    }
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        mPresenter.onHiddenChanged(hidden);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mPresenter.onActivityResult(requestCode ,resultCode ,data);
     }
 }

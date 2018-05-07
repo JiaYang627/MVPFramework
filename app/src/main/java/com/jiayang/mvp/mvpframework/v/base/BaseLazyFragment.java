@@ -1,12 +1,12 @@
 package com.jiayang.mvp.mvpframework.v.base;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDialogFragment;
-
 
 import com.jiayang.mvp.mvpframework.common.MVPApp;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.p.base.BaseLazyPresenter;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import javax.inject.Inject;
 
@@ -14,7 +14,7 @@ import javax.inject.Inject;
  * Created by 张 奎 on 2017-09-17 09:16.
  */
 
-public abstract class BaseLazyFragment<T extends BaseLazyPresenter> extends AppCompatDialogFragment implements IBaseView{
+public abstract class BaseLazyFragment<T extends BaseLazyPresenter> extends RxFragment implements IBaseView{
 
     @Inject
     protected T mPresenter;
@@ -86,5 +86,11 @@ public abstract class BaseLazyFragment<T extends BaseLazyPresenter> extends AppC
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         mPresenter.onHiddenChanged(hidden);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mPresenter.onActivityResult(requestCode ,resultCode ,data);
     }
 }
