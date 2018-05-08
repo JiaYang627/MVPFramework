@@ -13,13 +13,13 @@ import com.jiayang.mvp.mvpframework.p.MainActivityPst;
 import com.jiayang.mvp.mvpframework.utils.DialogUtils;
 import com.jiayang.mvp.mvpframework.utils.PermissionUtils;
 import com.jiayang.mvp.mvpframework.v.base.BaseActivity;
-import com.jiayang.mvp.mvpframework.v.iview.ImainAcitivityView;
+import com.jiayang.mvp.mvpframework.v.iview.MainActivityViewIpm;
 
 import java.util.List;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity<MainActivityPst> implements ImainAcitivityView {
+public class MainActivity extends BaseActivity<MainActivityPst> implements MainActivityViewIpm {
 
     @BindView(R.id.activity_main)
     RelativeLayout mActivityMain;

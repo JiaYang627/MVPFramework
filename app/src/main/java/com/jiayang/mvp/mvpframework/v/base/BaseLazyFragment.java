@@ -14,7 +14,7 @@ import javax.inject.Inject;
  * Created by 张 奎 on 2017-09-17 09:16.
  */
 
-public abstract class BaseLazyFragment<T extends BaseLazyPresenter> extends RxFragment implements IBaseView{
+public abstract class BaseLazyFragment<T extends BaseLazyPresenter> extends RxFragment implements BaseViewIpm {
 
     @Inject
     protected T mPresenter;

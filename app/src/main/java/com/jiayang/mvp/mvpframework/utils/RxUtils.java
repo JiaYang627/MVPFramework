@@ -1,7 +1,7 @@
 package com.jiayang.mvp.mvpframework.utils;
 
 
-import com.jiayang.mvp.mvpframework.v.base.IBaseView;
+import com.jiayang.mvp.mvpframework.v.base.BaseViewIpm;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.trello.rxlifecycle2.components.support.RxFragment;
@@ -19,7 +19,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RxUtils {
 
-    public static <T> LifecycleTransformer<T> bindToLifecycle(IBaseView view) {
+    public static <T> LifecycleTransformer<T> bindToLifecycle(BaseViewIpm view) {
         if (view instanceof RxAppCompatActivity) {
             return ((RxAppCompatActivity) view).bindToLifecycle();
         } else if (view instanceof RxFragment) {

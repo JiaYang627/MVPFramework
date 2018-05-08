@@ -11,7 +11,7 @@ import com.jiayang.mvp.mvpframework.m.rxhelper.RetryWithDelay;
 import com.jiayang.mvp.mvpframework.m.service.LocationService;
 import com.jiayang.mvp.mvpframework.p.base.BasePresenter;
 import com.jiayang.mvp.mvpframework.utils.RxUtils;
-import com.jiayang.mvp.mvpframework.v.iview.ImainAcitivityView;
+import com.jiayang.mvp.mvpframework.v.iview.MainActivityViewIpm;
 
 import javax.inject.Inject;
 
@@ -21,7 +21,7 @@ import io.reactivex.annotations.NonNull;
  * Created by Administrator on 2017/8/31 0031.
  */
 
-public class MainActivityPst extends BasePresenter<ImainAcitivityView> {
+public class MainActivityPst extends BasePresenter<MainActivityViewIpm> {
 
 
     private LocationService locationService;

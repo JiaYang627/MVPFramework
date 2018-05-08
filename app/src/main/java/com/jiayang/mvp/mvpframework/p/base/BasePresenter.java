@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.jiayang.mvp.mvpframework.common.WyNavigate;
 import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorHelper;
 import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorListener;
-import com.jiayang.mvp.mvpframework.v.base.IBaseView;
+import com.jiayang.mvp.mvpframework.v.base.BaseViewIpm;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
@@ -19,7 +19,7 @@ import javax.inject.Inject;
  * Created by Administrator on 2017/8/31 0031.
  */
 
-public class BasePresenter<View extends IBaseView> implements ErrorListener {
+public class BasePresenter<View extends BaseViewIpm> implements ErrorListener {
     @Inject
     protected WyNavigate wyNavigate;
 

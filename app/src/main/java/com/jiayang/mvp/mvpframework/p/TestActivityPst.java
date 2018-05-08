@@ -6,7 +6,7 @@ import android.widget.Toast;
 import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorListener;
 import com.jiayang.mvp.mvpframework.m.service.LocationService;
 import com.jiayang.mvp.mvpframework.p.base.BasePresenter;
-import com.jiayang.mvp.mvpframework.v.iview.ItestActivityView;
+import com.jiayang.mvp.mvpframework.v.iview.TestActivityViewIpm;
 
 import javax.inject.Inject;
 
@@ -14,7 +14,7 @@ import javax.inject.Inject;
  * Created by 张 奎 on 2017-09-02 08:31.
  */
 
-public class TestActivityPst extends BasePresenter<ItestActivityView> {
+public class TestActivityPst extends BasePresenter<TestActivityViewIpm> {
 
 
     private LocationService locationService;

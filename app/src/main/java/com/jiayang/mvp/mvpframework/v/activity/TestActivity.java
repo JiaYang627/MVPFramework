@@ -6,10 +6,10 @@ import android.widget.Toast;
 import com.jiayang.mvp.mvpframework.R;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.p.TestActivityPst;
-import com.jiayang.mvp.mvpframework.v.iview.ItestActivityView;
+import com.jiayang.mvp.mvpframework.v.iview.TestActivityViewIpm;
 import com.jiayang.mvp.mvpframework.v.base.BaseActivity;
 
-public class TestActivity extends BaseActivity<TestActivityPst> implements ItestActivityView {
+public class TestActivity extends BaseActivity<TestActivityPst> implements TestActivityViewIpm {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

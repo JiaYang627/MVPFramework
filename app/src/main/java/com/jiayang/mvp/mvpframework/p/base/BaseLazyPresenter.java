@@ -2,13 +2,13 @@ package com.jiayang.mvp.mvpframework.p.base;
 
 
 import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorListener;
-import com.jiayang.mvp.mvpframework.v.base.IBaseView;
+import com.jiayang.mvp.mvpframework.v.base.BaseViewIpm;
 
 /**
  * Created by 张 奎 on 2017-09-17 09:21.
  */
 
-public abstract class BaseLazyPresenter<View extends IBaseView> extends BasePresenter<View> {
+public abstract class BaseLazyPresenter<View extends BaseViewIpm> extends BasePresenter<View> {
 
     protected boolean isPrepared;
     protected boolean allowLoad = true; // 如果需要（重新）加载，这个变量设置为true
