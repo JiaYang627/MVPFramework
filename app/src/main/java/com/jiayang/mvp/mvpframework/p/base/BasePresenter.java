@@ -95,7 +95,7 @@ public class BasePresenter<View extends BaseViewIpm> implements ErrorListener {
         ErrorHelper.onError(context,throwable);
         handleNetError();
     }
-    protected void handleNetError() {
+    public void handleNetError() {
 
     }
 
