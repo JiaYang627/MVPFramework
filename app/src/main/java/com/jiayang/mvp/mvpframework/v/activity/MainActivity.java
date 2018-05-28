@@ -11,6 +11,7 @@ import com.jiayang.mvp.mvpframework.common.Constants;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.p.MainActivityPst;
 import com.jiayang.mvp.mvpframework.utils.DialogUtils;
+import com.jiayang.mvp.mvpframework.utils.LogUtils;
 import com.jiayang.mvp.mvpframework.utils.PermissionUtils;
 import com.jiayang.mvp.mvpframework.v.base.BaseActivity;
 import com.jiayang.mvp.mvpframework.v.iview.MainActivityViewIpm;
@@ -44,6 +45,7 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
 
         checkPermission();
 
+        LogUtils.e("JY");
     }
     private void checkPermission() {
         PermissionUtils.requestPermissions(this, Constants.PERMISSION_REQUEST_CODE, permissions, new PermissionUtils.OnPermissionListener() {
