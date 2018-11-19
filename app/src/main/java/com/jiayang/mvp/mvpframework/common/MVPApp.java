@@ -10,12 +10,12 @@ import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 
 public class MVPApp extends Application {
 
-    private MVPAppDeletage mvpAppDeletage;
+    private MVPAppDelegate mvpAppDeletage;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mvpAppDeletage = new MVPAppDeletage(this);
+        mvpAppDeletage = new MVPAppDelegate(this);
         mvpAppDeletage.onCreate();
     }
 

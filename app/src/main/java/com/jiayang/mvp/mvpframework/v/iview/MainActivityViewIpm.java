@@ -9,4 +9,6 @@ import com.jiayang.mvp.mvpframework.v.base.BaseViewIpm;
 
 public interface MainActivityViewIpm extends BaseViewIpm {
     void show();
+
+    void fillData(String s);
 }

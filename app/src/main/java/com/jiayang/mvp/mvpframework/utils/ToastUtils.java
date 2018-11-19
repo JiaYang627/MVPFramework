@@ -1,11 +1,9 @@
 package com.jiayang.mvp.mvpframework.utils;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
@@ -31,18 +29,11 @@ public class ToastUtils {
         initToast(msg, context, true);
     }
 
-    public static void initToast(int resId, Context context) {
-        if (context instanceof Activity || context instanceof FragmentActivity){
-            context = context.getApplicationContext();
-        }
+    public static void initToast(int resId) {
         initToast(context.getString(resId), context, true);
     }
 
     public static void initToast(String msg, Context context, boolean isSingleton) {
-        if (context instanceof Activity || context instanceof FragmentActivity){
-
-            context = context.getApplicationContext();
-        }
         if (mToast != null && isSingleton) {
             mToast.setText(msg);
         } else {
