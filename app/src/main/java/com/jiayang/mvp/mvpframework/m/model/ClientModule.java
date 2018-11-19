@@ -29,7 +29,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 @Module
 public class ClientModule {
 
-    private static int TIME_OUT = 60_000;
+    private static int TIME_OUT = 20_000;
 
     private final static String CLIENT_PRI_KEY = "client.bks";
     private final static String TRUSTSTORE_PUB_KEY = "server.cer";
