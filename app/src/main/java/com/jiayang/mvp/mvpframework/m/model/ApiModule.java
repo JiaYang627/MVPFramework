@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -33,7 +34,8 @@ public class ApiModule {
     }
 
     private Retrofit createRetrofit(Retrofit.Builder builder, String baseUrl, OkHttpClient client){
-        builder.client(client)
+        builder.client(RetrofitUrlManager.getInstance().with(client.newBuilder())
+                .build())
                 .baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())

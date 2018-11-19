@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
+import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 
 public class MainActivity extends BaseActivity<MainActivityPst> implements MainActivityViewIpm {
 
@@ -101,8 +102,29 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
     }
 
     public void button(View view) {
-//        mPresenter.show();
+        /**
+         * 最开始的时候 此方法的 接口是没有问题的。但是不知何时 关闭了此接口。
+         * 网络错误会报：HttpException: HTTP 404 Not Found 是对着的。
+         */
+        mPresenter.show();
+    }
 
+    public void changeUrl(View view) {
+        /**
+         *  此处为了测试 更换BaseUrl ,具体使用方法 参看 JessYan 的 RetrofitManager:https://github.com/JessYanCoding/RetrofitUrlManager/blob/master/README-zh.md
+         *  具体 BaseUrl 带有“/” 级别的 请看 JessYan 简书文章：https://www.jianshu.com/p/35a8959c2f86
+         *  此处简单说明一下 当前方法的使用
+         *
+         *  点击 此方法对应的按钮后，改变其BaseUrl，但是通过 网络打印 连接地址 还是为 改变之前的BaseUrl ，莫慌！！！，看清楚 网络信息
+         *  此处的网络日志打印 里 显示出了 ：Domain-Name: change   也就是说此处起到左右了，由于网络连接设置了 重连机制 并且超时时间设置的为 60s
+         *  待其重连结束后 可以看出 网络错误为：java.net.SocketTimeoutException: failed to connect to /121.42.248.165 (port 8088) after 60000ms
+         *  说明此时的BaseUrl 已经改变了。
+         */
+        RetrofitUrlManager.getInstance().putDomain("change", "http://121.42.248.165:8088/");
+        mPresenter.changeUrl();
+    }
+
+    public void showTime(View view) {
         TimePicker build = new TimePicker.Builder(this)
                 .setTimeChange(true)
                 .setType(new boolean[]{true, true, true, false, false, false})

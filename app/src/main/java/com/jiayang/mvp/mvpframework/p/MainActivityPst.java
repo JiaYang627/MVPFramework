@@ -62,6 +62,27 @@ public class MainActivityPst extends BasePresenter<MainActivityViewIpm> {
                 });
     }
 
+    public void changeUrl() {
+        // 测试 手机归属地 ，LocationService.KEY 必须写死 只需更换第一个参数 即可
+        locationService.getLocationForChange("13838385438" ,LocationService.KEY)
+                .retryWhen(new RetryWithDelay(3 ,2))
+                .compose(RxUtils.<LocationBean>getSchedulerTransformer())
+                .compose(RxUtils.<LocationBean>bindToLifecycle(mView))
+                .subscribe(new RequestCallback<LocationBean>(this) {
+                    @Override
+                    public void onNext(@NonNull LocationBean locationBean) {
+                        super.onNext(locationBean);
+                        Toast.makeText(context,locationBean.result.city , Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        super.onError(e);
+                        Log.e("MainActivityError", e+"");
+                    }
+                });
+    }
+
     @Override
     public void getData(Intent intent) {
 

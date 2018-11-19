@@ -13,6 +13,18 @@
         android:layout_height="wrap_content"
         android:onClick="button"
         android:text="测试数据"/>
+    <Button
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="changeUrl"
+        android:text="测试改变BaseUrl数据"/>
+    <Button
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showTime"
+        android:text="展示时间选择器"/>
 
     <TextView
         android:id="@+id/animNumTextView"
