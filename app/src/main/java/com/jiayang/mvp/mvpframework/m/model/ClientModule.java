@@ -2,12 +2,12 @@ package com.jiayang.mvp.mvpframework.m.model;
 
 import android.app.Application;
 
-
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.jiayang.mvp.mvpframework.m.http.HttpsUtils;
 import com.jiayang.mvp.mvpframework.m.http.RequestInterceptor;
 import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorListener;
 import com.jiayang.mvp.mvpframework.m.rxhelper.RxErrorHandler;
+import com.jiayang.mvp.mvpframework.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +72,12 @@ public class ClientModule {
     List<Interceptor> provideInterceptors(Application context) {
         List<Interceptor> interceptors = new ArrayList<>();
         interceptors.add(new RequestInterceptor(context));
-        interceptors.add(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
+        interceptors.add(new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+            @Override
+            public void log(String message) {
+                LogUtils.e(message);
+            }
+        }).setLevel(HttpLoggingInterceptor.Level.BODY));
         return interceptors;
     }
 

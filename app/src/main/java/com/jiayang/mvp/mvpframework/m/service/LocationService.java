@@ -28,4 +28,6 @@ public interface LocationService {
     @GET("mobile/get")
     Observable<LocationBean> getLocationForChange(@Query("phone") String phoneNumber, @Query("key") String key);
 
+    @GET("mobile/get")
+    Observable<LocationBean> getLocationForAll(@Query("phone") String phoneNumber, @Query("key") String key);
 }

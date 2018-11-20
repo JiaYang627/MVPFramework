@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.jiayang.mvp.mvpframework.common.WyNavigate;
-import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorHelper;
+import com.jiayang.mvp.mvpframework.common.AppNavigate;
 import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorListener;
 import com.jiayang.mvp.mvpframework.v.base.BaseViewIpm;
 
@@ -21,7 +20,7 @@ import javax.inject.Inject;
 
 public class BasePresenter<View extends BaseViewIpm> implements ErrorListener {
     @Inject
-    protected WyNavigate wyNavigate;
+    protected AppNavigate mAppNavigate;
 
     protected View mView;
     protected Reference<View> reference;
@@ -92,7 +91,7 @@ public class BasePresenter<View extends BaseViewIpm> implements ErrorListener {
 
     @Override
     public void handleError(Throwable throwable) {
-        ErrorHelper.onError(context,throwable);
+//        ErrorHelper.onError(context,throwable);
         handleNetError();
     }
     public void handleNetError() {

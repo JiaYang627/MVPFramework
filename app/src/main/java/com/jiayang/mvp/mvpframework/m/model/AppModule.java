@@ -2,7 +2,7 @@ package com.jiayang.mvp.mvpframework.m.model;
 
 import android.app.Application;
 
-import com.jiayang.mvp.mvpframework.common.WyNavigate;
+import com.jiayang.mvp.mvpframework.common.AppNavigate;
 
 import javax.inject.Singleton;
 
@@ -30,7 +30,7 @@ public class AppModule {
 
     @Singleton
     @Provides
-    WyNavigate provideWyNavigate() {
-        return new WyNavigate();
+    AppNavigate provideWyNavigate() {
+        return new AppNavigate();
     }
 }
