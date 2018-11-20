@@ -2,6 +2,7 @@ package com.jiayang.mvp.mvpframework.v.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -49,6 +50,9 @@ public class NumAnimActivity extends BaseActivity<NumAnimActivityPst> implements
     @OnClick(R.id.button)
     public void onViewClicked() {
         String s = editTextView.getText().toString();
-        NumAnim.startAnim(numTextView, Float.valueOf(s), 1500);
+        if (TextUtils.isEmpty(s)) {
+            s = "100";
+        }
+        NumAnim.startAnim(numTextView, Float.valueOf(s), 1000);
     }
 }

@@ -47,7 +47,7 @@ public class TimeSelectActivity extends BaseActivity<TimeSelectActivityPst> impl
 
     @OnClick({R.id.timeChangeButton, R.id.noTimeChangeButton})
     public void onViewClicked(View view) {
-        if (mBuild.isShowing()) {
+        if (mBuild != null && mBuild.isShowing()) {
             mBuild.dismiss();
         }
         switch (view.getId()) {
