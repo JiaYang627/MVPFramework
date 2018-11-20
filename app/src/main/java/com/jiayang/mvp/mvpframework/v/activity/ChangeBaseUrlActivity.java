@@ -2,7 +2,6 @@ package com.jiayang.mvp.mvpframework.v.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -112,7 +111,7 @@ public class ChangeBaseUrlActivity extends BaseActivity<ChangeBaseUrlActivityPst
 
         @Override
         public void onUrlChangeBefore(HttpUrl oldUrl, String domainName) {
-            Log.d("MainActivity", String.format("The oldUrl is <%s>, ready fetch <%s> from DomainNameHub",
+            LogUtils.e(String.format("The oldUrl is <%s>, ready fetch <%s> from DomainNameHub",
                     oldUrl.toString(),
                     domainName));
         }
