@@ -18,6 +18,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
+ * 是否带有时间范围的选择
+ *
  * @author ：张 奎
  * @date ：2018-11-20 09：17
  * 邮箱   ：JiaYang627@163.com / zhang_k@hks360.com

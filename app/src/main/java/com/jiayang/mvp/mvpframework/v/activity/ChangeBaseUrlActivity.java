@@ -25,6 +25,11 @@ import me.jessyan.retrofiturlmanager.onUrlChangeListener;
 import okhttp3.HttpUrl;
 
 /**
+ *
+ * 动态改变 Dagger2 已经注入过的 BaseUrl。
+ * 此处只是简单测试，具体详细的可以看 JessYan 的RetrofitManager：https://github.com/JessYanCoding/RetrofitUrlManager
+ * 使用方法可看其 简书文章：https://www.jianshu.com/p/35a8959c2f86
+ *
  * @author ：张 奎
  * @date ：2018-11-20 09：18
  * 邮箱   ：JiaYang627@163.com / zhang_k@hks360.com
