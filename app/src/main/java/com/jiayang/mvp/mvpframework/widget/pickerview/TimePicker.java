@@ -466,7 +466,7 @@ public class TimePicker extends BasePickerView implements View.OnClickListener {
                 // 右侧时间
                 mRightTimeTextView = (TextView) findViewById(R.id.rightTextView);
 
-                mLeftTimeTextView.setText(parseDateToStringTime(new Date(System.currentTimeMillis())));
+                mLeftTimeTextView.setText("2018/09/01");
                 mRightTimeTextView.setText(parseDateToStringTime(new Date(System.currentTimeMillis())));
 
                 mLeftTimeTextView.setSelected(true);

@@ -12,6 +12,7 @@ import com.jiayang.mvp.mvpframework.v.base.BaseActivity;
 import com.jiayang.mvp.mvpframework.v.iview.TimeSelectActivityViewIpm;
 import com.jiayang.mvp.mvpframework.widget.pickerview.TimePicker;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -63,7 +64,12 @@ public class TimeSelectActivity extends BaseActivity<TimeSelectActivityPst> impl
     }
 
     private void timeShow(boolean isShowChange) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, 2018);
+        calendar.set(Calendar.MONTH, 8);
+        calendar.set(Calendar.DATE,1);
         mBuild = new TimePicker.Builder(this)
+                .setRangDate(calendar, null)
                 .setTimeChange(isShowChange)
                 .setType(new boolean[]{true, true, true, false, false, false})
                 .setTimeSelectListener(new TimePicker.OnTimeSelectListener() {
