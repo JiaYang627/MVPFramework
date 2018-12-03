@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.jiayang.commonlibs.commonListAdapter.BaseAdapterHelper;
@@ -39,8 +38,6 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
     public String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE};
     @BindView(R.id.listView)
     ListView listView;
-    @BindView(R.id.activity_main)
-    LinearLayout activityMain;
 
     @Override
     protected void inject(ApiComponent apiComponent) {
