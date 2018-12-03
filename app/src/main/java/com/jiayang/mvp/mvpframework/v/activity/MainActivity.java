@@ -114,15 +114,4 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
 
 
 
-    @Override
-    public void show() {
-
-    }
-
-    @Override
-    public void fillData(String s) {
-        //        textView.setText(s);
-
-    }
-
 }
