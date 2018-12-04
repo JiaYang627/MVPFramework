@@ -7,7 +7,7 @@ import com.jiayang.mvp.mvpframework.R;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.p.TestActivityPst;
 import com.jiayang.mvp.mvpframework.v.iview.TestActivityViewIpm;
-import com.jiayang.mvp.mvpframework.v.base.BaseActivity;
+import com.jiayang.mvp.mvpframework.common.BaseActivity;
 
 public class TestActivity extends BaseActivity<TestActivityPst> implements TestActivityViewIpm {
 

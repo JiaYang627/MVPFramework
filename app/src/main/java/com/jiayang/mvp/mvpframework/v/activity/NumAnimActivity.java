@@ -11,7 +11,7 @@ import com.jiayang.mvp.mvpframework.R;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.p.NumAnimActivityPst;
 import com.jiayang.mvp.mvpframework.utils.NumAnim;
-import com.jiayang.mvp.mvpframework.v.base.BaseActivity;
+import com.jiayang.mvp.mvpframework.common.BaseActivity;
 import com.jiayang.mvp.mvpframework.v.iview.NumAnimActivityViewIpm;
 
 import butterknife.BindView;

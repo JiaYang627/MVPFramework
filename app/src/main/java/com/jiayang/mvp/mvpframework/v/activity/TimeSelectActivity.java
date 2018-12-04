@@ -8,7 +8,7 @@ import android.widget.Button;
 import com.jiayang.mvp.mvpframework.R;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.p.TimeSelectActivityPst;
-import com.jiayang.mvp.mvpframework.v.base.BaseActivity;
+import com.jiayang.mvp.mvpframework.common.BaseActivity;
 import com.jiayang.mvp.mvpframework.v.iview.TimeSelectActivityViewIpm;
 import com.jiayang.mvp.mvpframework.widget.pickerview.TimePicker;
 

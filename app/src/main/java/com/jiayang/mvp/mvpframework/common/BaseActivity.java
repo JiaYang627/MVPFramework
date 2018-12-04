@@ -1,4 +1,4 @@
-package com.jiayang.mvp.mvpframework.v.base;
+package com.jiayang.mvp.mvpframework.common;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.jiayang.mvp.mvpframework.common.MVPApp;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
-import com.jiayang.mvp.mvpframework.p.base.BasePresenter;
 import com.jiayang.mvp.mvpframework.utils.PermissionUtils;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 

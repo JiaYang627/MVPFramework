@@ -1,7 +1,7 @@
 package com.jiayang.mvp.mvpframework.utils;
 
 
-import com.jiayang.mvp.mvpframework.v.base.BaseViewIpm;
+import com.jiayang.mvp.mvpframework.common.BaseViewIpm;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.trello.rxlifecycle2.components.support.RxFragment;

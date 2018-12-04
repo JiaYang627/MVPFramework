@@ -1,6 +1,6 @@
 package com.jiayang.mvp.mvpframework.v.iview;
 
-import com.jiayang.mvp.mvpframework.v.base.BaseViewIpm;
+import com.jiayang.mvp.mvpframework.common.BaseViewIpm;
 
 /**
  * Created by 张 奎 on 2017-09-02 08:41.

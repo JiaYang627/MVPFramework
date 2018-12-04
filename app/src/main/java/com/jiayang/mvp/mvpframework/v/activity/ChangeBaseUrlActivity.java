@@ -11,7 +11,7 @@ import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.p.ChangeBaseUrlActivityPst;
 import com.jiayang.mvp.mvpframework.utils.LogUtils;
 import com.jiayang.mvp.mvpframework.utils.ToastUtils;
-import com.jiayang.mvp.mvpframework.v.base.BaseActivity;
+import com.jiayang.mvp.mvpframework.common.BaseActivity;
 import com.jiayang.mvp.mvpframework.v.iview.ChangeBaseUrlActivityViewIpm;
 
 import butterknife.BindView;

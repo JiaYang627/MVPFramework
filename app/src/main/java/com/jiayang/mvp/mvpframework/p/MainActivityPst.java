@@ -2,7 +2,7 @@ package com.jiayang.mvp.mvpframework.p;
 
 import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorListener;
 import com.jiayang.mvp.mvpframework.m.service.LocationService;
-import com.jiayang.mvp.mvpframework.p.base.BasePresenter;
+import com.jiayang.mvp.mvpframework.common.BasePresenter;
 import com.jiayang.mvp.mvpframework.v.iview.MainActivityViewIpm;
 
 import javax.inject.Inject;
