@@ -14,6 +14,7 @@ import com.jiayang.mvp.mvpframework.R;
 import com.jiayang.mvp.mvpframework.bean.Model;
 import com.jiayang.mvp.mvpframework.common.Constants;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
+import com.jiayang.mvp.mvpframework.mvp.ui.activity.ZXingActivity;
 import com.jiayang.mvp.mvpframework.p.MainActivityPst;
 import com.jiayang.mvp.mvpframework.utils.DialogUtils;
 import com.jiayang.mvp.mvpframework.utils.LogUtils;
@@ -28,9 +29,9 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseActivity<MainActivityPst> implements MainActivityViewIpm {
 
-    private String[] strings = new String[]{"NumAnim" ,"TimeSelect" ,"ChangeBaseUrl"};
+    private String[] strings = new String[]{"NumAnim" ,"TimeSelect" ,"ChangeBaseUrl","ZXing"};
     private final Class<?>[] mClasses = {NumAnimActivity.class, TimeSelectActivity.class,
-            ChangeBaseUrlActivity.class};
+            ChangeBaseUrlActivity.class, ZXingActivity.class};
     private QuickAdapter<Model> mAdapter;
     private List<Model> mStringList = new ArrayList<>();
 
