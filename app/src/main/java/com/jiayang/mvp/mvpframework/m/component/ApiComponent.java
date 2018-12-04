@@ -1,6 +1,5 @@
 package com.jiayang.mvp.mvpframework.m.component;
 
-import com.jiayang.mvp.mvpframework.home.mvp.ui.activity.HomeActivity;
 import com.jiayang.mvp.mvpframework.m.model.ApiModule;
 import com.jiayang.mvp.mvpframework.v.activity.ChangeBaseUrlActivity;
 import com.jiayang.mvp.mvpframework.v.activity.MainActivity;
@@ -28,5 +27,4 @@ public interface ApiComponent {
 
     void inject(ChangeBaseUrlActivity changeBaseUrlActivity);
 
-    void inject(HomeActivity homeActivity);
 }
