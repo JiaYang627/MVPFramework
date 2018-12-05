@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.jiayang.mvp.mvpframework.R;
@@ -22,8 +21,6 @@ import butterknife.BindView;
 public class ZXingActivity extends BaseActivity<ZXingPresenter> implements ZXingViewIpm {
 
 
-    @BindView(R.id.second_button1)
-    Button secondButton1;
     @BindView(R.id.fl_my_container)
     FrameLayout flMyContainer;
     @BindView(R.id.activity_second)
