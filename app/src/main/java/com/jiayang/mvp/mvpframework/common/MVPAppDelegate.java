@@ -11,7 +11,6 @@ import com.jiayang.mvp.mvpframework.m.component.DaggerAppComponent;
 import com.jiayang.mvp.mvpframework.m.model.ApiModule;
 import com.jiayang.mvp.mvpframework.m.model.AppModule;
 import com.jiayang.mvp.mvpframework.utils.LogUtils;
-import com.jiayang.mvp.mvpframework.utils.ToastUtils;
 
 import javax.inject.Inject;
 
@@ -36,7 +35,6 @@ public class MVPAppDelegate {
     public void onCreate() {
         initInject();
         initLogs();
-        ToastUtils.init(appContext);
         Stetho.initializeWithDefaults(appContext);
 
     }

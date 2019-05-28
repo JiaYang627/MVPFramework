@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jiayang.mvp.mvpframework.R;
-import com.jiayang.mvp.mvpframework.utils.ToastUtils;
+import com.jiayang.mvp.mvpframework.utils.ToastUtilsBlankJ;
 import com.jiayang.mvp.mvpframework.widget.pickerview.lib.WheelView;
 import com.jiayang.mvp.mvpframework.widget.pickerview.listener.CustomListener;
 import com.jiayang.mvp.mvpframework.widget.pickerview.view.BasePickerView;
@@ -565,7 +565,7 @@ public class TimePicker extends BasePickerView implements View.OnClickListener {
             String beforeStr = ((TextView) currentView).getText().toString();
             ((TextView)currentView).setText(parseDateToStringTime(WheelTime.dateFormat.parse(wheelTime.getTime())));
             if (parseDate2TimeMillis1(mLeftTimeTextView.getText().toString()) > parseDate2TimeMillis1(mRightTimeTextView.getText().toString())) {
-                ToastUtils.initToast(currentView == mLeftTimeTextView ?"开始时间不能晚于结束时间" :"结束时间不能早于开始时间");
+                ToastUtilsBlankJ.showShort(currentView == mLeftTimeTextView ?"开始时间不能晚于结束时间" :"结束时间不能早于开始时间");
                 ((TextView) currentView).setText(beforeStr);
                 changeWheelToText(beforeStr);
             }
@@ -701,13 +701,13 @@ public class TimePicker extends BasePickerView implements View.OnClickListener {
                 if (timeChange) {
 
                     timeSelectListener.onTimeChangeSelect(mLeftTimeTextView.getText().toString(), mRightTimeTextView.getText().toString(), clickView);
-                    ToastUtils.initToast("选择的时间范围为：" + mLeftTimeTextView.getText().toString() + "  --  " + mRightTimeTextView.getText().toString());
+                    ToastUtilsBlankJ.showShort("选择的时间范围为：" + mLeftTimeTextView.getText().toString() + "  --  " + mRightTimeTextView.getText().toString());
                 } else {
 
                     Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
 
                     timeSelectListener.onTimeSelect(date, clickView);
-                    ToastUtils.initToast("选择的时间为：" + date.toString());
+                    ToastUtilsBlankJ.showShort("选择的时间为：" + date.toString());
                 }
             } catch (ParseException e) {
                 e.printStackTrace();

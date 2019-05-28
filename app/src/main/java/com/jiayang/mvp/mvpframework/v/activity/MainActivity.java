@@ -20,6 +20,7 @@ import com.jiayang.mvp.mvpframework.utils.DialogUtils;
 import com.jiayang.mvp.mvpframework.utils.LogUtils;
 import com.jiayang.mvp.mvpframework.utils.PermissionUtils;
 import com.jiayang.mvp.mvpframework.common.BaseActivity;
+import com.jiayang.mvp.mvpframework.utils.ToastUtilsBlankJ;
 import com.jiayang.mvp.mvpframework.v.iview.MainActivityViewIpm;
 
 import java.util.ArrayList;
@@ -29,14 +30,15 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseActivity<MainActivityPst> implements MainActivityViewIpm {
 
-    private String[] strings = new String[]{"NumAnim" ,"TimeSelect" ,"ChangeBaseUrl","ZXing"};
+    private String[] strings = new String[]{"NumAnim" ,"TimeSelect" ,
+            "ChangeBaseUrl","ZXing","TestSpannable"};
     private final Class<?>[] mClasses = {NumAnimActivity.class, TimeSelectActivity.class,
-            ChangeBaseUrlActivity.class, ZXingActivity.class};
+            ChangeBaseUrlActivity.class, ZXingActivity.class,TestActivity.class};
     private QuickAdapter<Model> mAdapter;
     private List<Model> mStringList = new ArrayList<>();
 
     //必须的权限 预防6.0动态权限   此处模拟 两个权限
-    public String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE};
+    public String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE,Manifest.permission.CALL_PHONE};
     @BindView(R.id.listView)
     ListView listView;
 
@@ -78,7 +80,8 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
                     @Override
                     public void onClick(View v) {
 
-                        goToActivity(mClasses[item.mInt]);
+                        goToActivity(mClasses[item.mInt],"a");
+                        ToastUtilsBlankJ.showShort("测试");
 
                     }
                 });
@@ -87,8 +90,9 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
 
     }
 
-    private void goToActivity(Class activityClass) {
+    private void goToActivity(Class activityClass,String s) {
         Intent intent = new Intent(this, activityClass);
+        intent.putExtra("test", s);
         startActivity(intent);
 
     }

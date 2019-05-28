@@ -7,11 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.jiayang.mvp.mvpframework.R;
+import com.jiayang.mvp.mvpframework.common.BaseActivity;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.p.ChangeBaseUrlActivityPst;
 import com.jiayang.mvp.mvpframework.utils.LogUtils;
-import com.jiayang.mvp.mvpframework.utils.ToastUtils;
-import com.jiayang.mvp.mvpframework.common.BaseActivity;
+import com.jiayang.mvp.mvpframework.utils.ToastUtilsBlankJ;
 import com.jiayang.mvp.mvpframework.v.iview.ChangeBaseUrlActivityViewIpm;
 
 import butterknife.BindView;
@@ -104,7 +104,7 @@ public class ChangeBaseUrlActivity extends BaseActivity<ChangeBaseUrlActivityPst
             case R.id.clearChangeButton:
                 RetrofitUrlManager.getInstance().removeGlobalDomain();
                 LogUtils.e("移除了全局baseUrl");
-                ToastUtils.initToast("移除了全局baseUrl");
+                ToastUtilsBlankJ.showShort("移除了全局baseUrl");
                 break;
             case R.id.textOneButton:
                 mPresenter.oneChangeGetInfo();
@@ -128,7 +128,7 @@ public class ChangeBaseUrlActivity extends BaseActivity<ChangeBaseUrlActivityPst
                     .subscribe(new Consumer<Object>() {
                         @Override
                         public void accept(Object o) throws Exception {
-                            ToastUtils.initToast("The newUrl is { " + newUrl.toString() + " }");
+                            ToastUtilsBlankJ.showShort("The newUrl is { " + newUrl.toString() + " }");
                             LogUtils.e("The newUrl is { " + newUrl.toString() + " }");
                         }
                     }, new Consumer<Throwable>() {
