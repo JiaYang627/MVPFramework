@@ -20,16 +20,17 @@ import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.SpannableActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.ZXingActivity;
 import com.jiayang.mvp.mvpframework.p.MainActivityPst;
-import com.jiayang.mvp.mvpframework.utils.DialogUtils;
 import com.jiayang.mvp.mvpframework.utils.LogUtils;
-import com.jiayang.mvp.mvpframework.utils.PermissionUtils;
 import com.jiayang.mvp.mvpframework.utils.ToastUtilsBlankJ;
 import com.jiayang.mvp.mvpframework.v.iview.MainActivityViewIpm;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 public class MainActivity extends BaseActivity<MainActivityPst> implements MainActivityViewIpm {
 
@@ -44,10 +45,12 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
     private List<Model> mStringList = new ArrayList<>();
 
     //必须的权限 预防6.0动态权限   此处模拟 两个权限
-    public String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.CALL_PHONE};
+    public String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.CALL_PHONE,Manifest.permission.CAMERA};
     @BindView(R.id.listView)
     ListView listView;
     private long mExitTime;
+    private Disposable mPermissDis;
 
     @Override
     protected void inject(ApiComponent apiComponent) {
@@ -112,20 +115,34 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
     }
 
     private void checkPermission() {
-        PermissionUtils.requestPermissions(this, Constants.PERMISSION_REQUEST_CODE, permissions, new PermissionUtils.OnPermissionListener() {
-            @Override
-            public void onPermissionGranted(List<String> granted) {
-                DialogUtils.dismissDialogRequestPermission();
-                if (granted.size() == permissions.length) {
-                    //                    mPresenter.getHomeInfo();     再次请求数据
-                }
-            }
+//        PermissionUtils.requestPermissions(this, Constants.PERMISSION_REQUEST_CODE, permissions, new PermissionUtils.OnPermissionListener() {
+//            @Override
+//            public void onPermissionGranted(List<String> granted) {
+//                DialogUtils.dismissDialogRequestPermission();
+//                if (granted.size() == permissions.length) {
+//                    //                    mPresenter.getHomeInfo();     再次请求数据
+//                }
+//            }
+//
+//            @Override
+//            public void onPermissionDenied(List<String> denied) {
+//                DialogUtils.showDialogRequestPermission(MainActivity.this);
+//            }
+//        });
 
-            @Override
-            public void onPermissionDenied(List<String> denied) {
-                DialogUtils.showDialogRequestPermission(MainActivity.this);
-            }
-        });
+        mPermissDis = new RxPermissions(this)
+                .request( Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE,
+                        Manifest.permission.CAMERA, Manifest.permission.CALL_PHONE)
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+                        if (!aBoolean) {
+                            ToastUtilsBlankJ.showShort("权限被拒绝");
+                        } else {
+                            // TODO
+                        }
+                    }
+                });
     }
 
 
@@ -144,5 +161,13 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
             }
         }
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPermissDis != null) {
+            mPermissDis.dispose();
+        }
     }
 }

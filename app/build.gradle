@@ -49,4 +49,6 @@ dependencies {
     compile 'me.jessyan:retrofit-url-manager:1.4.0'
     compile project(':commonlibs')
     compile 'cn.yipianfengye.android:zxing-library:2.2'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+
 }
