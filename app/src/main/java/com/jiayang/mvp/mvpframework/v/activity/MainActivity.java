@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListView;
 
@@ -12,14 +14,15 @@ import com.jiayang.commonlibs.commonListAdapter.BaseAdapterHelper;
 import com.jiayang.commonlibs.commonListAdapter.QuickAdapter;
 import com.jiayang.mvp.mvpframework.R;
 import com.jiayang.mvp.mvpframework.bean.Model;
+import com.jiayang.mvp.mvpframework.common.BaseActivity;
 import com.jiayang.mvp.mvpframework.common.Constants;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
+import com.jiayang.mvp.mvpframework.mvp.ui.activity.SpannableActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.ZXingActivity;
 import com.jiayang.mvp.mvpframework.p.MainActivityPst;
 import com.jiayang.mvp.mvpframework.utils.DialogUtils;
 import com.jiayang.mvp.mvpframework.utils.LogUtils;
 import com.jiayang.mvp.mvpframework.utils.PermissionUtils;
-import com.jiayang.mvp.mvpframework.common.BaseActivity;
 import com.jiayang.mvp.mvpframework.utils.ToastUtilsBlankJ;
 import com.jiayang.mvp.mvpframework.v.iview.MainActivityViewIpm;
 
@@ -30,17 +33,21 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseActivity<MainActivityPst> implements MainActivityViewIpm {
 
-    private String[] strings = new String[]{"NumAnim" ,"TimeSelect" ,
-            "ChangeBaseUrl","ZXing","TestSpannable"};
+    private String[] strings = new String[]{"NumAnim", "TimeSelect",
+            "ChangeBaseUrl", "ZXing", "Spannable"};
+
     private final Class<?>[] mClasses = {NumAnimActivity.class, TimeSelectActivity.class,
-            ChangeBaseUrlActivity.class, ZXingActivity.class,TestActivity.class};
+            ChangeBaseUrlActivity.class, ZXingActivity.class, SpannableActivity.class};
+
+
     private QuickAdapter<Model> mAdapter;
     private List<Model> mStringList = new ArrayList<>();
 
     //必须的权限 预防6.0动态权限   此处模拟 两个权限
-    public String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE,Manifest.permission.CALL_PHONE};
+    public String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.CALL_PHONE};
     @BindView(R.id.listView)
     ListView listView;
+    private long mExitTime;
 
     @Override
     protected void inject(ApiComponent apiComponent) {
@@ -80,8 +87,8 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
                     @Override
                     public void onClick(View v) {
 
-                        goToActivity(mClasses[item.mInt],"a");
-                        ToastUtilsBlankJ.showShort("测试");
+                        goToActivity(mClasses[item.mInt]);
+                        //                        ToastUtilsBlankJ.showShort("测试");
 
                     }
                 });
@@ -90,9 +97,16 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
 
     }
 
-    private void goToActivity(Class activityClass,String s) {
+    private void goToActivity(Class activityClass) {
+        goToActivity(activityClass, null, null);
+
+    }
+
+    private void goToActivity(Class activityClass, String key, String value) {
         Intent intent = new Intent(this, activityClass);
-        intent.putExtra("test", s);
+        if (!TextUtils.isEmpty(key)) {
+            intent.putExtra(key, value);
+        }
         startActivity(intent);
 
     }
@@ -116,4 +130,19 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
 
 
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            long cur = System.currentTimeMillis();
+            if (cur - mExitTime > Constants.EXIT_INTERVAL_TIME) {
+                ToastUtilsBlankJ.showShort(R.string.common_exit_two);
+                mExitTime = cur;
+                return true;
+            } else {
+                finish();
+                android.os.Process.killProcess(android.os.Process.myPid());
+            }
+        }
+        return true;
+    }
 }

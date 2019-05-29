@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MVPFramework</string>
-
+    <string name="common_exit_two">再按一次退出程序</string>
 
     <string name="nonet">没有网络，请检查网络</string>
     <string name="generic_server_down">网络数据异常，请重试</string>
