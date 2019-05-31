@@ -22,6 +22,8 @@ public class BaseView extends View {
     private int mClickType;
     private Paint mLinePaint;
     private Paint mMoreLinePaint;
+    private Paint mSignPoint;
+    private Paint mMorePoint;
 
     public BaseView(Context context) {
         this(context, null);
@@ -47,7 +49,8 @@ public class BaseView extends View {
 
         initLinePaint();
         initMoreLinePaint();
-
+        initSignPoint();
+        initMorePoint();
 
 
 
@@ -74,6 +77,26 @@ public class BaseView extends View {
 
     }
 
+    /**
+     * 初始化 单点 画笔
+     */
+    private void initSignPoint() {
+
+        mSignPoint = new Paint();
+        mSignPoint.setStrokeWidth(15);
+        mSignPoint.setColor(Color.BLACK);
+    }
+
+    /**
+     * 初始化 多点画笔
+     */
+    private void initMorePoint() {
+
+        mMorePoint = new Paint();
+        mMorePoint.setStrokeWidth(15);
+
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -94,6 +117,22 @@ public class BaseView extends View {
                 mMoreLinePaint.setColor(Color.RED);
                 // offset:点数组中角标开始值  count:从开始值开始算 保留多少个值，此处 为：200，100，300，200
                 canvas.drawLines(ptsTwo, 2, 4, mMoreLinePaint);
+                break;
+            case Constants.BASE_VIEW_SIGN_POINT:
+
+                canvas.drawPoint(100, 200, mSignPoint);
+
+                break;
+            case Constants.BASE_VIEW_MORE_POINT:
+
+                float[] point = {200, 200, 300, 300,400,400};
+                mMorePoint.setColor(Color.RED);
+                canvas.drawPoints(point,mMorePoint);
+
+                float[] pointTwo = {100, 100, 300, 200, 400, 300};
+                mMorePoint.setColor(Color.BLACK);
+                // offset:点数组中角标开始值  count:从开始值开始算 保留多少个值，此处 为：300, 200, 400, 300
+                canvas.drawPoints(pointTwo, 2, 4,mMorePoint);
                 break;
         }
 

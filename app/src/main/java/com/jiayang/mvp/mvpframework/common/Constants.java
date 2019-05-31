@@ -14,4 +14,6 @@ public class Constants {
 
     public static final int BASE_VIEW_SIGN_LINE = 1;
     public static final int BASE_VIEW_MORE_LINE = 2;
+    public static final int BASE_VIEW_SIGN_POINT = 3;
+    public static final int BASE_VIEW_MORE_POINT = 4;
 }
