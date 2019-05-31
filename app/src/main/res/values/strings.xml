@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MVPFramework</string>
+    <string name="app_name">MVPDemo</string>
     <string name="common_exit_two">再按一次退出程序</string>
 
     <string name="nonet">没有网络，请检查网络</string>

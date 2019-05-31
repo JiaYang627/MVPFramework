@@ -158,7 +158,7 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
                 return true;
             } else {
                 finish();
-                android.os.Process.killProcess(android.os.Process.myPid());
+//                android.os.Process.killProcess(android.os.Process.myPid());
             }
         }
         return true;
