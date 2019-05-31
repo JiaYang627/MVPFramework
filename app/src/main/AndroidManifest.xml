@@ -49,8 +49,11 @@
                 android:resource="@xml/file_paths"/>
         </provider>
 
-        <activity android:name=".mvp.ui.activity.SpannableActivity"
+        <activity
+            android:name=".mvp.ui.activity.SpannableActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".mvp.ui.activity.CustomActivity">
+        </activity>
     </application>
 
 </manifest>

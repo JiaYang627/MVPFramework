@@ -1,6 +1,7 @@
 package com.jiayang.mvp.mvpframework.m.component;
 
 import com.jiayang.mvp.mvpframework.m.model.ApiModule;
+import com.jiayang.mvp.mvpframework.mvp.ui.activity.CustomActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.SpannableActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.ZXingActivity;
 import com.jiayang.mvp.mvpframework.v.activity.ChangeBaseUrlActivity;
@@ -32,4 +33,6 @@ public interface ApiComponent {
     void inject(ZXingActivity zXingActivity);
 
     void inject(SpannableActivity spannableActivity);
+
+    void inject(CustomActivity customActivity);
 }

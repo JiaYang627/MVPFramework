@@ -50,5 +50,7 @@ dependencies {
     compile project(':commonlibs')
     compile 'cn.yipianfengye.android:zxing-library:2.2'
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
 
 }
