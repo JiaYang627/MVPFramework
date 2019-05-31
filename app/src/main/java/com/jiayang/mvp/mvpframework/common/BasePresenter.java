@@ -23,7 +23,7 @@ public class BasePresenter<View extends BaseViewIpm> implements ErrorListener {
     protected View mView;
     protected Reference<View> reference;
     protected ErrorListener errorListener;
-    protected Activity context;
+    protected Activity mContext;
     private boolean isViewAttach;
 
     public BasePresenter(ErrorListener errorListener) {
@@ -61,7 +61,7 @@ public class BasePresenter<View extends BaseViewIpm> implements ErrorListener {
     }
 
     public void getContext(Activity context) {
-        this.context = context;
+        this.mContext = context;
     }
 
     /**

@@ -1,14 +1,13 @@
 package com.jiayang.mvp.mvpframework.p;
 
-import android.widget.Toast;
-
+import com.jiayang.mvp.mvpframework.common.BasePresenter;
 import com.jiayang.mvp.mvpframework.m.bean.LocationBean;
 import com.jiayang.mvp.mvpframework.m.rxhelper.ErrorListener;
 import com.jiayang.mvp.mvpframework.m.rxhelper.RequestCallback;
 import com.jiayang.mvp.mvpframework.m.service.LocationService;
-import com.jiayang.mvp.mvpframework.common.BasePresenter;
 import com.jiayang.mvp.mvpframework.utils.LogUtils;
 import com.jiayang.mvp.mvpframework.utils.RxUtils;
+import com.jiayang.mvp.mvpframework.utils.ToastUtilsBlankJ;
 import com.jiayang.mvp.mvpframework.v.iview.ChangeBaseUrlActivityViewIpm;
 
 import javax.inject.Inject;
@@ -37,7 +36,7 @@ public class ChangeBaseUrlActivityPst extends BasePresenter<ChangeBaseUrlActivit
                     @Override
                     public void onNext(@NonNull LocationBean locationBean) {
                         super.onNext(locationBean);
-                        Toast.makeText(context,locationBean.result.city , Toast.LENGTH_SHORT).show();
+                        ToastUtilsBlankJ.showShort(locationBean.result.city);
                     }
 
                     @Override
@@ -56,7 +55,7 @@ public class ChangeBaseUrlActivityPst extends BasePresenter<ChangeBaseUrlActivit
                     @Override
                     public void onNext(@NonNull LocationBean locationBean) {
                         super.onNext(locationBean);
-                        Toast.makeText(context,locationBean.result.city , Toast.LENGTH_SHORT).show();
+                        ToastUtilsBlankJ.showShort(locationBean.result.city);
                     }
 
                     @Override
@@ -75,7 +74,7 @@ public class ChangeBaseUrlActivityPst extends BasePresenter<ChangeBaseUrlActivit
                     @Override
                     public void onNext(@NonNull LocationBean locationBean) {
                         super.onNext(locationBean);
-                        Toast.makeText(context,locationBean.result.city , Toast.LENGTH_SHORT).show();
+                        ToastUtilsBlankJ.showShort(locationBean.result.city);
                     }
 
                     @Override
