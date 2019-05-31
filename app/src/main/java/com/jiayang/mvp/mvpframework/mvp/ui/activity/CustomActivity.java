@@ -33,9 +33,16 @@ public class CustomActivity extends BaseActivity<CustomPresenter> implements Cus
 
 
     private List<BaseViewBean> mViewBeans;
-    private String[] mStrings = new String[]{"SignLineView", "MoreLineView", "SignPoint" ,"MorePoint"};
+    private String[] mStrings = new String[]{"SignLineView", "MoreLineView", "SignPointView", "MorePointView",
+            "RectView", "RoundRectView", "CircleView"};
+
+
     private int[] mInts = new int[]{Constants.BASE_VIEW_SIGN_LINE, Constants.BASE_VIEW_MORE_LINE,
-            Constants.BASE_VIEW_SIGN_POINT , Constants.BASE_VIEW_MORE_POINT};
+            Constants.BASE_VIEW_SIGN_POINT, Constants.BASE_VIEW_MORE_POINT,
+            Constants.BASE_VIEW_RECT, Constants.BASE_VIEW_ROUND_RECT,
+            Constants.BASE_VIEW_CIRCLE};
+
+
     private BaseViewAdapter mAdapter;
 
     @Override

@@ -24,17 +24,20 @@ public class BaseView extends View {
     private Paint mMoreLinePaint;
     private Paint mSignPoint;
     private Paint mMorePoint;
+    private Paint mRectPaint;
+    private Paint mRoundPaint;
+    private Paint mCirclePaint;
 
     public BaseView(Context context) {
         this(context, null);
     }
 
     public BaseView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public BaseView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr,0);
+        this(context, attrs, defStyleAttr, 0);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -45,15 +48,25 @@ public class BaseView extends View {
         init();
     }
 
+    public void onClick(int mClickType) {
+        this.mClickType = mClickType;
+        invalidate();
+    }
+
     private void init() {
 
         initLinePaint();
         initMoreLinePaint();
+
+
         initSignPoint();
         initMorePoint();
 
 
+        initRect();
+        initRoundRect();
 
+        initCircle();
     }
 
     /**
@@ -97,6 +110,40 @@ public class BaseView extends View {
 
     }
 
+    /**
+     * 初始化 矩形画笔
+     */
+    private void initRect() {
+
+        mRectPaint = new Paint();
+        mRectPaint.setStrokeWidth(10);
+        mRectPaint.setColor(Color.RED);
+    }
+
+    /**
+     * 初始化 圆角画笔
+     */
+    private void initRoundRect() {
+
+        mRoundPaint = new Paint();
+        mRoundPaint.setStrokeWidth(10);
+        mRoundPaint.setColor(Color.RED);
+        mRoundPaint.setAntiAlias(true);
+
+    }
+
+    /**
+     * 初始化 圆画笔
+     */
+    private void initCircle() {
+
+        mCirclePaint = new Paint();
+        mCirclePaint.setAntiAlias(true);
+        mCirclePaint.setStrokeWidth(10);
+
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -104,7 +151,7 @@ public class BaseView extends View {
 
         switch (mClickType) {
             case Constants.BASE_VIEW_SIGN_LINE:
-                canvas.drawLine(10,10,100,100,mLinePaint);
+                canvas.drawLine(10, 10, 100, 100, mLinePaint);
                 break;
             case Constants.BASE_VIEW_MORE_LINE:
 
@@ -125,22 +172,47 @@ public class BaseView extends View {
                 break;
             case Constants.BASE_VIEW_MORE_POINT:
 
-                float[] point = {200, 200, 300, 300,400,400};
+                float[] point = {200, 200, 300, 300, 400, 400};
                 mMorePoint.setColor(Color.RED);
-                canvas.drawPoints(point,mMorePoint);
+                canvas.drawPoints(point, mMorePoint);
 
                 float[] pointTwo = {100, 100, 300, 200, 400, 300};
                 mMorePoint.setColor(Color.BLACK);
                 // offset:点数组中角标开始值  count:从开始值开始算 保留多少个值，此处 为：300, 200, 400, 300
-                canvas.drawPoints(pointTwo, 2, 4,mMorePoint);
+                canvas.drawPoints(pointTwo, 2, 4, mMorePoint);
                 break;
+
+            case Constants.BASE_VIEW_RECT:
+                mRectPaint.setStyle(Paint.Style.STROKE);
+                canvas.drawRect(100, 20, 300, 220, mRectPaint);
+
+
+                mRectPaint.setStyle(Paint.Style.FILL);
+                canvas.drawRect(100, 320, 300, 520, mRectPaint);
+
+                break;
+            case Constants.BASE_VIEW_ROUND_RECT:
+
+
+                mRoundPaint.setStyle(Paint.Style.STROKE);
+                // rx ry 是4角椭圆生成时 椭圆的各轴半径
+                canvas.drawRoundRect(200, 20, 400, 220, 10, 10, mRoundPaint);
+
+
+                mRoundPaint.setStyle(Paint.Style.FILL);
+                canvas.drawRoundRect(200, 320, 400, 520, 10, 10, mRoundPaint);
+                break;
+
+            case Constants.BASE_VIEW_CIRCLE:
+                mCirclePaint.setStyle(Paint.Style.STROKE);
+                canvas.drawCircle(300,300,100,mCirclePaint);
+
+                mCirclePaint.setStyle(Paint.Style.FILL);
+                canvas.drawCircle(500,300,100,mCirclePaint);
+                break;
+
         }
 
 
-    }
-
-    public void onClick(int mClickType) {
-        this.mClickType = mClickType;
-        invalidate();
     }
 }
