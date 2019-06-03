@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
 import android.os.Build;
 import android.support.annotation.Nullable;
@@ -32,8 +33,15 @@ public class BaseView extends View {
     private Paint mOvalPaint;
     private Paint mArcPaint;
     private Paint mRectContainsPaint;
-    private int mX ,mY;
+    private int mX, mY;
     private Rect mRectContains;
+    private Paint mLinePathPaint;
+    private Path mLinePath;
+    private Paint mArcPathPaint;
+    private Path mArcPath;
+    private Path mArcPathForce;
+    private Paint mAddArcPaint;
+    private Path mAddArcPath;
 
     public BaseView(Context context) {
         this(context, null);
@@ -79,6 +87,10 @@ public class BaseView extends View {
 
         initArc();
         initRectContains();
+
+        initLinePath();
+        initArcPath();
+        initAddArcPath();
     }
 
     /**
@@ -189,6 +201,64 @@ public class BaseView extends View {
 
     }
 
+    /**
+     * 初始化 直线路径 画笔
+     */
+    private void initLinePath() {
+
+        mLinePathPaint = new Paint();
+        mLinePathPaint.setColor(Color.BLACK);
+        mLinePathPaint.setStyle(Paint.Style.STROKE);
+        mLinePathPaint.setStrokeWidth(10);
+
+        mLinePath = new Path();
+        mLinePath.moveTo(100, 120);
+        mLinePath.lineTo(100, 360);
+        mLinePath.lineTo(700, 360);
+        mLinePath.close();
+
+    }
+
+    /**
+     * 初始化 弧 路径画笔
+     */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void initArcPath() {
+        mArcPathPaint = new Paint();
+        mArcPathPaint.setColor(Color.RED);
+        mArcPathPaint.setStyle(Paint.Style.STROKE);
+        mArcPathPaint.setStrokeWidth(10);
+
+
+        mArcPath = new Path();
+        mArcPath.moveTo(100, 100);
+        mArcPath.arcTo(200, 200, 400, 400, 0, 90, false);
+
+
+        mArcPathForce = new Path();
+        mArcPathForce.moveTo(500, 100);
+        mArcPathForce.arcTo(600, 200, 800, 400, 0, 90, true);
+
+    }
+
+    /**
+     * 初始化 添加弧 路径 画笔
+     */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void initAddArcPath() {
+        mAddArcPaint = new Paint();
+        mAddArcPaint.setColor(Color.BLACK);
+        mAddArcPaint.setStrokeWidth(10);
+        mAddArcPaint.setStyle(Paint.Style.STROKE);
+
+        mAddArcPath = new Path();
+        mAddArcPath.moveTo(100,100);
+        mAddArcPath.lineTo(200,200);
+        mAddArcPath.addArc(300,200,500,600,0,90);
+
+
+    }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onDraw(Canvas canvas) {
@@ -288,11 +358,23 @@ public class BaseView extends View {
                     mRectContainsPaint.setColor(Color.BLACK);
                 }
 
-                canvas.drawRect(mRectContains,mRectContainsPaint);
+                canvas.drawRect(mRectContains, mRectContainsPaint);
+                break;
+            case Constants.BASE_VIEW_LINE_PATH:
+
+                canvas.drawPath(mLinePath, mLinePathPaint);
+                break;
+            case Constants.BASE_VIEW_ARC_PATH:
+                canvas.drawPath(mArcPath, mArcPathPaint);
+                canvas.drawPath(mArcPathForce, mArcPathPaint);
+                break;
+
+            case Constants.BASE_VIEW_ADD_ARC_PATH:
+
+                canvas.drawPath(mAddArcPath,mAddArcPaint);
                 break;
 
         }
-
 
 
     }
@@ -306,8 +388,8 @@ public class BaseView extends View {
 
 
             if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-                mX = (int)event.getX();
-                mY = (int)event.getY();
+                mX = (int) event.getX();
+                mY = (int) event.getY();
 
 
             } else if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
@@ -316,7 +398,6 @@ public class BaseView extends View {
 
             invalidate();
             return true;
-
 
 
         }
