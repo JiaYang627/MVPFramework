@@ -33,13 +33,14 @@ public class CustomActivity extends BaseActivity<CustomPresenter> implements Cus
 
 
     private String[] mStrings = new String[]{"SignLineView", "MoreLineView", "SignPointView", "MorePointView",
-            "RectView", "RoundRectView", "CircleView","OvalView","ArcView"};
+            "RectView", "RoundRectView", "CircleView", "OvalView", "ArcView", "RectContains"};
 
 
     private int[] mInts = new int[]{Constants.BASE_VIEW_SIGN_LINE, Constants.BASE_VIEW_MORE_LINE,
             Constants.BASE_VIEW_SIGN_POINT, Constants.BASE_VIEW_MORE_POINT,
             Constants.BASE_VIEW_RECT, Constants.BASE_VIEW_ROUND_RECT,
-            Constants.BASE_VIEW_CIRCLE ,Constants.BASE_VIEW_OVAL,Constants.Base_VIEW_ARC};
+            Constants.BASE_VIEW_CIRCLE, Constants.BASE_VIEW_OVAL, Constants.Base_VIEW_ARC,
+            Constants.Base_VIEW_RECT_CONTAINS};
 
 
     private BaseViewAdapter mAdapter;

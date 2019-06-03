@@ -5,9 +5,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.jiayang.mvp.mvpframework.common.Constants;
@@ -29,6 +31,9 @@ public class BaseView extends View {
     private Paint mCirclePaint;
     private Paint mOvalPaint;
     private Paint mArcPaint;
+    private Paint mRectContainsPaint;
+    private int mX ,mY;
+    private Rect mRectContains;
 
     public BaseView(Context context) {
         this(context, null);
@@ -51,6 +56,7 @@ public class BaseView extends View {
     }
 
     public void onClick(int mClickType) {
+        mX = mY = -1;
         this.mClickType = mClickType;
         invalidate();
     }
@@ -72,6 +78,7 @@ public class BaseView extends View {
         initOval();
 
         initArc();
+        initRectContains();
     }
 
     /**
@@ -169,6 +176,19 @@ public class BaseView extends View {
 
     }
 
+    /**
+     * 初始化 矩形是否包含点 画笔
+     */
+    private void initRectContains() {
+        mRectContainsPaint = new Paint();
+        mRectContainsPaint.setStrokeWidth(10);
+        mRectContainsPaint.setStyle(Paint.Style.STROKE);
+
+        mRectContains = new Rect(100, 40, 300, 300);
+
+
+    }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onDraw(Canvas canvas) {
@@ -250,18 +270,56 @@ public class BaseView extends View {
             case Constants.Base_VIEW_ARC:
 
                 // 画笔 为 描边时 两种情况，useCenter:是否带弧的两边
-                canvas.drawArc(200,100,400,300,0,180,false,mArcPaint);
-                canvas.drawArc(500,100,700,300,0,180,true,mArcPaint);
+                canvas.drawArc(200, 100, 400, 300, 0, 180, false, mArcPaint);
+                canvas.drawArc(500, 100, 700, 300, 0, 180, true, mArcPaint);
 
 
                 // 画笔 为 填充时 两种情况，useCenter:是否带弧的两边
                 mArcPaint.setStyle(Paint.Style.FILL);
-                canvas.drawArc(200,400,400,600,0,90,false,mArcPaint);
-                canvas.drawArc(500,400,700,600,0,90,true,mArcPaint);
+                canvas.drawArc(200, 400, 400, 600, 0, 90, false, mArcPaint);
+                canvas.drawArc(500, 400, 700, 600, 0, 90, true, mArcPaint);
 
                 break;
+            case Constants.Base_VIEW_RECT_CONTAINS:
+
+                if (mRectContains.contains(mX, mY)) {
+                    mRectContainsPaint.setColor(Color.RED);
+                } else {
+                    mRectContainsPaint.setColor(Color.BLACK);
+                }
+
+                canvas.drawRect(mRectContains,mRectContainsPaint);
+                break;
+
         }
 
+
+
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (mClickType != Constants.Base_VIEW_RECT_CONTAINS) {
+
+            return super.onTouchEvent(event);
+        } else {
+
+
+            if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
+                mX = (int)event.getX();
+                mY = (int)event.getY();
+
+
+            } else if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                mX = mY = -1;
+            }
+
+            invalidate();
+            return true;
+
+
+
+        }
 
     }
 }
