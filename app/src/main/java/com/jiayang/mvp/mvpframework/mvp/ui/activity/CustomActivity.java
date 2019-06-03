@@ -32,15 +32,14 @@ public class CustomActivity extends BaseActivity<CustomPresenter> implements Cus
     BaseView mBaseView;
 
 
-    private List<BaseViewBean> mViewBeans;
     private String[] mStrings = new String[]{"SignLineView", "MoreLineView", "SignPointView", "MorePointView",
-            "RectView", "RoundRectView", "CircleView"};
+            "RectView", "RoundRectView", "CircleView","OvalView","ArcView"};
 
 
     private int[] mInts = new int[]{Constants.BASE_VIEW_SIGN_LINE, Constants.BASE_VIEW_MORE_LINE,
             Constants.BASE_VIEW_SIGN_POINT, Constants.BASE_VIEW_MORE_POINT,
             Constants.BASE_VIEW_RECT, Constants.BASE_VIEW_ROUND_RECT,
-            Constants.BASE_VIEW_CIRCLE};
+            Constants.BASE_VIEW_CIRCLE ,Constants.BASE_VIEW_OVAL,Constants.Base_VIEW_ARC};
 
 
     private BaseViewAdapter mAdapter;
@@ -58,7 +57,7 @@ public class CustomActivity extends BaseActivity<CustomPresenter> implements Cus
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewBeans = new ArrayList<>();
+        List<BaseViewBean> mViewBeans = new ArrayList<>();
 
         for (int i = 0; i < mStrings.length; i++) {
 

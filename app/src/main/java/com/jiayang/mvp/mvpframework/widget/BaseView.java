@@ -27,6 +27,8 @@ public class BaseView extends View {
     private Paint mRectPaint;
     private Paint mRoundPaint;
     private Paint mCirclePaint;
+    private Paint mOvalPaint;
+    private Paint mArcPaint;
 
     public BaseView(Context context) {
         this(context, null);
@@ -67,6 +69,9 @@ public class BaseView extends View {
         initRoundRect();
 
         initCircle();
+        initOval();
+
+        initArc();
     }
 
     /**
@@ -143,6 +148,27 @@ public class BaseView extends View {
 
     }
 
+    /**
+     * 初始化 椭圆画笔
+     */
+    private void initOval() {
+
+        mOvalPaint = new Paint();
+        mOvalPaint.setStrokeWidth(10);
+        mOvalPaint.setStyle(Paint.Style.STROKE);
+    }
+
+    /**
+     * 初始化 弧画笔
+     */
+    private void initArc() {
+        mArcPaint = new Paint();
+        mArcPaint.setColor(Color.RED);
+        mArcPaint.setStrokeWidth(10);
+        mArcPaint.setStyle(Paint.Style.STROKE);
+
+    }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onDraw(Canvas canvas) {
@@ -205,12 +231,35 @@ public class BaseView extends View {
 
             case Constants.BASE_VIEW_CIRCLE:
                 mCirclePaint.setStyle(Paint.Style.STROKE);
-                canvas.drawCircle(300,300,100,mCirclePaint);
+                canvas.drawCircle(300, 300, 100, mCirclePaint);
 
                 mCirclePaint.setStyle(Paint.Style.FILL);
-                canvas.drawCircle(500,300,100,mCirclePaint);
+                canvas.drawCircle(500, 300, 100, mCirclePaint);
+                break;
+            case Constants.BASE_VIEW_OVAL:
+
+                mOvalPaint.setColor(Color.BLACK);
+                canvas.drawRect(200, 100, 400, 400, mOvalPaint);
+
+
+                mOvalPaint.setColor(Color.RED);
+                canvas.drawOval(200, 100, 400, 400, mOvalPaint);
+
                 break;
 
+            case Constants.Base_VIEW_ARC:
+
+                // 画笔 为 描边时 两种情况，useCenter:是否带弧的两边
+                canvas.drawArc(200,100,400,300,0,180,false,mArcPaint);
+                canvas.drawArc(500,100,700,300,0,180,true,mArcPaint);
+
+
+                // 画笔 为 填充时 两种情况，useCenter:是否带弧的两边
+                mArcPaint.setStyle(Paint.Style.FILL);
+                canvas.drawArc(200,400,400,600,0,90,false,mArcPaint);
+                canvas.drawArc(500,400,700,600,0,90,true,mArcPaint);
+
+                break;
         }
 
 

@@ -19,5 +19,7 @@ public class Constants {
     public static final int BASE_VIEW_RECT = 5;
     public static final int BASE_VIEW_ROUND_RECT = 6;
     public static final int BASE_VIEW_CIRCLE = 7;
+    public static final int BASE_VIEW_OVAL = 8;
+    public static final int Base_VIEW_ARC = 9;
 
 }
