@@ -42,6 +42,12 @@ public class BaseView extends View {
     private Path mArcPathForce;
     private Paint mAddArcPaint;
     private Path mAddArcPath;
+    private Paint mAddRectPaint;
+    private Path mAddRectCWWPath;
+    private Path mAddRectCWPath;
+    private String mStr;
+    private Paint mAddRoundRectPaint;
+    private Path mAddRoundRectPath;
 
     public BaseView(Context context) {
         this(context, null);
@@ -91,6 +97,8 @@ public class BaseView extends View {
         initLinePath();
         initArcPath();
         initAddArcPath();
+        initAddRectPath();
+        initAddRoundRectPath();
     }
 
     /**
@@ -252,9 +260,54 @@ public class BaseView extends View {
         mAddArcPaint.setStyle(Paint.Style.STROKE);
 
         mAddArcPath = new Path();
-        mAddArcPath.moveTo(100,100);
-        mAddArcPath.lineTo(200,200);
-        mAddArcPath.addArc(300,200,500,600,0,90);
+        mAddArcPath.moveTo(100, 100);
+        mAddArcPath.lineTo(200, 200);
+        mAddArcPath.addArc(300, 200, 500, 600, 0, 90);
+
+
+    }
+
+    /**
+     * 初始化 添加 矩形路径 画笔
+     */
+    private void initAddRectPath() {
+
+        mAddRectPaint = new Paint();
+        mAddRectPaint.setColor(Color.RED);
+        mAddRectPaint.setStrokeWidth(5);
+        mAddRectPaint.setStyle(Paint.Style.STROKE);
+        mAddRectPaint.setAntiAlias(true);
+
+        mAddRectCWWPath = new Path();
+        mAddRectCWWPath.addRect(50, 50, 240, 200, Path.Direction.CCW);
+
+        mAddRectCWPath = new Path();
+        mAddRectCWPath.addRect(290, 50, 480, 200, Path.Direction.CW);
+
+        mStr = "路够黑， 光 才亮";
+        mAddRectPaint.setTextSize(35);
+
+    }
+
+    /**
+     * 初始化 添加 圆角矩形路径 画笔
+     */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void initAddRoundRectPath() {
+
+        mAddRoundRectPaint = new Paint();
+        mAddRoundRectPaint.setStyle(Paint.Style.STROKE);
+        mAddRoundRectPaint.setStrokeWidth(10);
+        mAddRoundRectPaint.setColor(Color.BLACK);
+
+
+        mAddRoundRectPath = new Path();
+
+        mAddRoundRectPath.addRoundRect(50,50,240,200,10,15, Path.Direction.CCW);
+
+        float[] radii = {10, 10, 20, 20, 30, 30, 40, 40};
+        mAddRoundRectPath.addRoundRect(290,50,480,200,radii, Path.Direction.CCW);
+
 
 
     }
@@ -371,7 +424,19 @@ public class BaseView extends View {
 
             case Constants.BASE_VIEW_ADD_ARC_PATH:
 
-                canvas.drawPath(mAddArcPath,mAddArcPaint);
+                canvas.drawPath(mAddArcPath, mAddArcPaint);
+                break;
+
+            case Constants.BASE_VIEW_ADD_RECT_PATH:
+                canvas.drawPath(mAddRectCWWPath, mAddRectPaint);
+                canvas.drawPath(mAddRectCWPath, mAddRectPaint);
+
+
+                canvas.drawTextOnPath(mStr, mAddRectCWWPath, 0, 18, mAddRectPaint);
+                canvas.drawTextOnPath(mStr, mAddRectCWPath, 0, 18, mAddRectPaint);
+                break;
+            case Constants.BASE_VIEW_ADD_ROUND_RECT_PATH:
+                canvas.drawPath(mAddRoundRectPath,mAddRoundRectPaint);
                 break;
 
         }
