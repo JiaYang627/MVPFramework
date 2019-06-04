@@ -16,7 +16,13 @@
     </android.support.v7.widget.RecyclerView>
 
     <com.jiayang.mvp.mvpframework.widget.BaseView
+        android:visibility="gone"
         android:id="@+id/baseView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <com.jiayang.mvp.mvpframework.widget.SpiderGrid
+        android:visibility="gone"
+        android:id="@+id/spiderGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>

@@ -16,6 +16,7 @@ import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.mvp.ipm.CustomViewIpm;
 import com.jiayang.mvp.mvpframework.mvp.presenter.CustomPresenter;
 import com.jiayang.mvp.mvpframework.widget.BaseView;
+import com.jiayang.mvp.mvpframework.widget.SpiderGrid;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,20 +31,22 @@ public class CustomActivity extends BaseActivity<CustomPresenter> implements Cus
     RecyclerView mRecyclerView;
     @BindView(R.id.baseView)
     BaseView mBaseView;
+    @BindView(R.id.spiderGrid)
+    SpiderGrid mSpiderGrid;
 
 
     private String[] mStrings = new String[]{"SignLineView", "MoreLineView", "SignPointView", "MorePointView",
             "RectView", "RoundRectView", "CircleView", "OvalView", "ArcView", "RectContains", "LinePathView",
-            "ArcPathView", "AddArcPath" ,"AddRectPath" ,"AddRoundPath" , "PathFillType"};
+            "ArcPathView", "AddArcPath", "AddRectPath", "AddRoundPath", "PathFillType", "SpiderGridView"};
 
 
     private int[] mInts = new int[]{Constants.BASE_VIEW_SIGN_LINE, Constants.BASE_VIEW_MORE_LINE,
             Constants.BASE_VIEW_SIGN_POINT, Constants.BASE_VIEW_MORE_POINT,
             Constants.BASE_VIEW_RECT, Constants.BASE_VIEW_ROUND_RECT,
-            Constants.BASE_VIEW_CIRCLE, Constants.BASE_VIEW_OVAL, Constants.Base_VIEW_ARC,
-            Constants.Base_VIEW_RECT_CONTAINS, Constants.BASE_VIEW_LINE_PATH, Constants.BASE_VIEW_ARC_PATH,
-            Constants.BASE_VIEW_ADD_ARC_PATH ,Constants.BASE_VIEW_ADD_RECT_PATH ,Constants.BASE_VIEW_ADD_ROUND_RECT_PATH ,
-            Constants.BASE_VIEW_PATH_FILL_TYPE};
+            Constants.BASE_VIEW_CIRCLE, Constants.BASE_VIEW_OVAL, Constants.BASE_VIEW_ARC,
+            Constants.BASE_VIEW_RECT_CONTAINS, Constants.BASE_VIEW_LINE_PATH, Constants.BASE_VIEW_ARC_PATH,
+            Constants.BASE_VIEW_ADD_ARC_PATH, Constants.BASE_VIEW_ADD_RECT_PATH, Constants.BASE_VIEW_ADD_ROUND_RECT_PATH,
+            Constants.BASE_VIEW_PATH_FILL_TYPE, Constants.SPIDER_GRID};
 
 
     private BaseViewAdapter mAdapter;
@@ -81,7 +84,21 @@ public class CustomActivity extends BaseActivity<CustomPresenter> implements Cus
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 int mClickType = mAdapter.getData().get(position).mType;
-                mBaseView.onClick(mClickType);
+                if (mClickType == Constants.SPIDER_GRID) {
+
+                    if (mSpiderGrid.getVisibility() == View.GONE) {
+                        mBaseView.setVisibility(View.GONE);
+                        mSpiderGrid.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    mBaseView.onClick(mClickType);
+
+                    if (mBaseView.getVisibility() == View.GONE) {
+                        mBaseView.setVisibility(View.VISIBLE);
+                        mSpiderGrid.setVisibility(View.GONE);
+                    }
+
+                }
             }
         });
 

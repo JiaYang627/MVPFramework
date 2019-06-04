@@ -439,7 +439,7 @@ public class BaseView extends View {
 
                 break;
 
-            case Constants.Base_VIEW_ARC:
+            case Constants.BASE_VIEW_ARC:
 
                 // 画笔 为 描边时 两种情况，useCenter:是否带弧的两边
                 canvas.drawArc(200, 100, 400, 300, 0, 180, false, mArcPaint);
@@ -452,7 +452,7 @@ public class BaseView extends View {
                 canvas.drawArc(500, 400, 700, 600, 0, 90, true, mArcPaint);
 
                 break;
-            case Constants.Base_VIEW_RECT_CONTAINS:
+            case Constants.BASE_VIEW_RECT_CONTAINS:
 
                 if (mRectContains.contains(mX, mY)) {
                     mRectContainsPaint.setColor(Color.RED);
@@ -503,7 +503,7 @@ public class BaseView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (mClickType != Constants.Base_VIEW_RECT_CONTAINS) {
+        if (mClickType != Constants.BASE_VIEW_RECT_CONTAINS) {
 
             return super.onTouchEvent(event);
         } else {

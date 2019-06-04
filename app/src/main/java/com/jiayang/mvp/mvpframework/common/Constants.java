@@ -20,13 +20,14 @@ public class Constants {
     public static final int BASE_VIEW_ROUND_RECT = 6;
     public static final int BASE_VIEW_CIRCLE = 7;
     public static final int BASE_VIEW_OVAL = 8;
-    public static final int Base_VIEW_ARC = 9;
-    public static final int Base_VIEW_RECT_CONTAINS = 10;
+    public static final int BASE_VIEW_ARC = 9;
+    public static final int BASE_VIEW_RECT_CONTAINS = 10;
     public static final int BASE_VIEW_LINE_PATH = 11;
     public static final int BASE_VIEW_ARC_PATH = 12;
     public static final int BASE_VIEW_ADD_ARC_PATH = 13;
     public static final int BASE_VIEW_ADD_RECT_PATH = 14;
     public static final int BASE_VIEW_ADD_ROUND_RECT_PATH = 15;
     public static final int BASE_VIEW_PATH_FILL_TYPE = 16;
+    public static final int SPIDER_GRID = 17;
 
 }
