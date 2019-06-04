@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -48,6 +49,11 @@ public class BaseView extends View {
     private String mStr;
     private Paint mAddRoundRectPaint;
     private Path mAddRoundRectPath;
+    private Path mPathFillTypeLeft;
+    private Path mPathFillTypeTop;
+    private Path mPathFillTypeRight;
+    private Path mPathFillTypeBottom;
+    private Paint mPathFillTypePaint;
 
     public BaseView(Context context) {
         this(context, null);
@@ -99,6 +105,8 @@ public class BaseView extends View {
         initAddArcPath();
         initAddRectPath();
         initAddRoundRectPath();
+
+        initPathFillType();
     }
 
     /**
@@ -303,11 +311,52 @@ public class BaseView extends View {
 
         mAddRoundRectPath = new Path();
 
-        mAddRoundRectPath.addRoundRect(50,50,240,200,10,15, Path.Direction.CCW);
+        mAddRoundRectPath.addRoundRect(50, 50, 240, 200, 10, 15, Path.Direction.CCW);
 
         float[] radii = {10, 10, 20, 20, 30, 30, 40, 40};
-        mAddRoundRectPath.addRoundRect(290,50,480,200,radii, Path.Direction.CCW);
+        mAddRoundRectPath.addRoundRect(290, 50, 480, 200, radii, Path.Direction.CCW);
 
+
+    }
+
+    /**
+     * 初始化 路径填充 画笔
+     */
+    private void initPathFillType() {
+        mPathFillTypePaint = new Paint();
+        mPathFillTypePaint.setColor(Color.BLACK);
+        mPathFillTypePaint.setStyle(Paint.Style.FILL);
+        mPathFillTypePaint.setStrokeWidth(10);
+
+
+        RectF rectFLeft = new RectF(100, 100, 300, 300);
+        RectF rectFTop = new RectF(500, 100, 700, 300);
+        RectF rectFRight = new RectF(100, 500, 300, 700);
+        RectF rectFBottom = new RectF(500, 500, 700, 700);
+
+
+        mPathFillTypeLeft = new Path();
+        mPathFillTypeLeft.addRect(rectFLeft, Path.Direction.CW);
+        mPathFillTypeLeft.addCircle(300,300,100, Path.Direction.CW);
+        mPathFillTypeLeft.setFillType(Path.FillType.WINDING);
+
+
+        mPathFillTypeTop = new Path();
+        mPathFillTypeTop.addRect(rectFTop, Path.Direction.CW);
+        mPathFillTypeTop.addCircle(700,300,100, Path.Direction.CW);
+        mPathFillTypeTop.setFillType(Path.FillType.EVEN_ODD);
+
+
+        mPathFillTypeRight = new Path();
+        mPathFillTypeRight.addRect(rectFRight, Path.Direction.CW);
+        mPathFillTypeRight.addCircle(300,700,100, Path.Direction.CW);
+        mPathFillTypeRight.setFillType(Path.FillType.INVERSE_WINDING);
+
+
+        mPathFillTypeBottom = new Path();
+        mPathFillTypeBottom.addRect(rectFBottom, Path.Direction.CW);
+        mPathFillTypeBottom.addCircle(700,700,100, Path.Direction.CW);
+        mPathFillTypeBottom.setFillType(Path.FillType.INVERSE_EVEN_ODD);
 
 
     }
@@ -436,7 +485,15 @@ public class BaseView extends View {
                 canvas.drawTextOnPath(mStr, mAddRectCWPath, 0, 18, mAddRectPaint);
                 break;
             case Constants.BASE_VIEW_ADD_ROUND_RECT_PATH:
-                canvas.drawPath(mAddRoundRectPath,mAddRoundRectPaint);
+                canvas.drawPath(mAddRoundRectPath, mAddRoundRectPaint);
+                break;
+            case Constants.BASE_VIEW_PATH_FILL_TYPE:
+                canvas.drawPath(mPathFillTypeLeft,mPathFillTypePaint);
+                canvas.drawPath(mPathFillTypeTop,mPathFillTypePaint);
+                // 因为 当前View 没有设置固定宽高， 如果使用下面两种模式，除了绘画的部分 View其余部分都是黑色，上面两种就看不出来效果了
+//                canvas.drawPath(mPathFillTypeRight,mPathFillTypePaint);
+//                canvas.drawPath(mPathFillTypeBottom,mPathFillTypePaint);
+
                 break;
 
         }

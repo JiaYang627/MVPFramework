@@ -27,5 +27,6 @@ public class Constants {
     public static final int BASE_VIEW_ADD_ARC_PATH = 13;
     public static final int BASE_VIEW_ADD_RECT_PATH = 14;
     public static final int BASE_VIEW_ADD_ROUND_RECT_PATH = 15;
+    public static final int BASE_VIEW_PATH_FILL_TYPE = 16;
 
 }
