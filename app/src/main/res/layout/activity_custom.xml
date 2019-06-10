@@ -25,4 +25,9 @@
         android:id="@+id/spiderGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <com.jiayang.mvp.mvpframework.widget.TextViews
+        android:visibility="gone"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

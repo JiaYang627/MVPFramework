@@ -17,6 +17,7 @@ import com.jiayang.mvp.mvpframework.mvp.ipm.CustomViewIpm;
 import com.jiayang.mvp.mvpframework.mvp.presenter.CustomPresenter;
 import com.jiayang.mvp.mvpframework.widget.BaseView;
 import com.jiayang.mvp.mvpframework.widget.SpiderGrid;
+import com.jiayang.mvp.mvpframework.widget.TextViews;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +34,13 @@ public class CustomActivity extends BaseActivity<CustomPresenter> implements Cus
     BaseView mBaseView;
     @BindView(R.id.spiderGrid)
     SpiderGrid mSpiderGrid;
+    @BindView(R.id.textView)
+    TextViews mTextViews;
 
 
     private String[] mStrings = new String[]{"SignLineView", "MoreLineView", "SignPointView", "MorePointView",
             "RectView", "RoundRectView", "CircleView", "OvalView", "ArcView", "RectContains", "LinePathView",
-            "ArcPathView", "AddArcPath", "AddRectPath", "AddRoundPath", "PathFillType", "SpiderGridView"};
+            "ArcPathView", "AddArcPath", "AddRectPath", "AddRoundPath", "PathFillType", "SpiderGridView","TextViewStyle"};
 
 
     private int[] mInts = new int[]{Constants.BASE_VIEW_SIGN_LINE, Constants.BASE_VIEW_MORE_LINE,
@@ -46,7 +49,7 @@ public class CustomActivity extends BaseActivity<CustomPresenter> implements Cus
             Constants.BASE_VIEW_CIRCLE, Constants.BASE_VIEW_OVAL, Constants.BASE_VIEW_ARC,
             Constants.BASE_VIEW_RECT_CONTAINS, Constants.BASE_VIEW_LINE_PATH, Constants.BASE_VIEW_ARC_PATH,
             Constants.BASE_VIEW_ADD_ARC_PATH, Constants.BASE_VIEW_ADD_RECT_PATH, Constants.BASE_VIEW_ADD_ROUND_RECT_PATH,
-            Constants.BASE_VIEW_PATH_FILL_TYPE, Constants.SPIDER_GRID};
+            Constants.BASE_VIEW_PATH_FILL_TYPE, Constants.SPIDER_GRID ,Constants.TEXT_VIEW_STYLE};
 
 
     private BaseViewAdapter mAdapter;
@@ -89,15 +92,23 @@ public class CustomActivity extends BaseActivity<CustomPresenter> implements Cus
                     if (mSpiderGrid.getVisibility() == View.GONE) {
                         mBaseView.setVisibility(View.GONE);
                         mSpiderGrid.setVisibility(View.VISIBLE);
+                        mTextViews.setVisibility(View.GONE);
                     }
-                } else {
+                } else if (mClickType < Constants.SPIDER_GRID) {
                     mBaseView.onClick(mClickType);
 
                     if (mBaseView.getVisibility() == View.GONE) {
                         mBaseView.setVisibility(View.VISIBLE);
                         mSpiderGrid.setVisibility(View.GONE);
+                        mTextViews.setVisibility(View.GONE);
                     }
 
+                } else {
+                    if (mTextViews.getVisibility() == View.GONE) {
+                        mBaseView.setVisibility(View.GONE);
+                        mSpiderGrid.setVisibility(View.GONE);
+                        mTextViews.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });
