@@ -31,6 +31,7 @@ public class SpiderGrid extends View {
     private int mCenterY;
     private int mCount = 6;
     private double mAngle = 2 * PI / 360 * 60;
+    private double[] mData =  {3,5,1,6,4,5};
 
     public SpiderGrid(Context context) {
         this(context, null);
@@ -84,6 +85,8 @@ public class SpiderGrid extends View {
         drawPolygon(canvas);
         // 绘制网格中线
         drawLines(canvas);
+        // 绘制数据图
+        drawRegion(canvas);
 
 
     }
@@ -125,6 +128,30 @@ public class SpiderGrid extends View {
             path.lineTo(x,y);
             canvas.drawPath(path,mRadarPaint);
         }
+
+    }
+
+    private void drawRegion(Canvas canvas) {
+        Path path = new Path();
+        mValuePaint.setAlpha(127);
+        for (int i = 0; i < mCount; i++) {
+            double percent = mData[i] / mCount;
+
+            float x = (float) (mCenterX + mRadius * Math.cos(mAngle * i) * percent);
+            float y = (float) (mCenterY + mRadius * Math.sin(mAngle * i) * percent);
+
+
+            if (i == 0) {
+                path.moveTo(x, mCenterY);
+            } else {
+                path.lineTo(x, y);
+            }
+
+            canvas.drawCircle(x,y,10,mValuePaint);
+        }
+
+        mValuePaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        canvas.drawPath(path,mValuePaint);
 
     }
 }
