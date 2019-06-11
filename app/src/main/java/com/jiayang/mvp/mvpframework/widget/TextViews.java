@@ -20,6 +20,7 @@ import com.jiayang.mvp.mvpframework.common.Constants;
 public class TextViews extends View {
     private int mClickType;
     private Paint mStylePaint;
+    private Paint mAlignPaint;
 
     public TextViews(Context context) {
         this(context,null);
@@ -47,8 +48,12 @@ public class TextViews extends View {
     private void initPaint() {
 
         initTextStyle();
+        initTextAlign();
     }
 
+    /**
+     * 初始化 字体 Style样式
+     */
     private void initTextStyle() {
         mStylePaint = new Paint();
         mStylePaint.setColor(Color.RED);
@@ -56,6 +61,18 @@ public class TextViews extends View {
         mStylePaint.setAntiAlias(true);
         mStylePaint.setTextSize(60);
 
+
+    }
+
+    /**
+     * 初始化 字体 起始点位置
+     */
+    private void initTextAlign() {
+        mAlignPaint = new Paint();
+        mAlignPaint.setColor(Color.RED);
+        mAlignPaint.setStrokeWidth(3);
+        mAlignPaint.setAntiAlias(true);
+        mAlignPaint.setTextSize(60);
 
     }
 
@@ -72,6 +89,19 @@ public class TextViews extends View {
 
                 mStylePaint.setStyle(Paint.Style.FILL_AND_STROKE);
                 canvas.drawText("路够黑， 光 才亮",10,500,mStylePaint);
+
+                break;
+            case Constants.TEXT_VIEW_ALIGN:
+                mAlignPaint.setTextAlign(Paint.Align.LEFT);
+                canvas.drawText("路够黑， 光 才亮",500,100,mAlignPaint);
+                mStylePaint.setColor(Color.BLACK);
+                canvas.drawCircle(500, 100, 10, mStylePaint);
+
+                mAlignPaint.setTextAlign(Paint.Align.CENTER);
+                canvas.drawText("路够黑， 光 才亮",500,300,mAlignPaint);
+
+                mAlignPaint.setTextAlign(Paint.Align.RIGHT);
+                canvas.drawText("路够黑， 光 才亮",500,500,mAlignPaint);
 
 
 
