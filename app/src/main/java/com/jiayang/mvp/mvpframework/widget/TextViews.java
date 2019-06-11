@@ -137,6 +137,23 @@ public class TextViews extends View {
                 mTextStylePaint.setStrikeThruText(true);
                 canvas.drawText(mStr, 500, 500, mTextStylePaint);
 
+                mTextStylePaint.setUnderlineText(false);
+                mTextStylePaint.setStrikeThruText(false);
+
+                // 倾斜
+                mTextStylePaint.setTextSkewX(-0.25f);
+                canvas.drawText(mStr,10,100,mTextStylePaint);
+
+                mTextStylePaint.setTextSkewX(0.25f);
+                canvas.drawText(mStr,10,300,mTextStylePaint);
+
+
+                mTextStylePaint.setTextSkewX(0);
+                // 拉伸
+                mTextStylePaint.setTextScaleX(2);
+                mTextStylePaint.setTextAlign(Paint.Align.CENTER);
+                canvas.drawText(mStr,500,700,mTextStylePaint);
+
                 break;
         }
     }
