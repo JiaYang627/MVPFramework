@@ -15,6 +15,8 @@
 
     </android.support.v7.widget.RecyclerView>
 
+    <View style="@style/LineHorizontal"/>
+
     <com.jiayang.mvp.mvpframework.widget.BaseView
         android:visibility="gone"
         android:id="@+id/baseView"

@@ -104,6 +104,7 @@ public class CustomActivity extends BaseActivity<CustomPresenter> implements Cus
                     }
 
                 } else {
+                    mTextViews.onClick(mClickType);
                     if (mTextViews.getVisibility() == View.GONE) {
                         mBaseView.setVisibility(View.GONE);
                         mSpiderGrid.setVisibility(View.GONE);
