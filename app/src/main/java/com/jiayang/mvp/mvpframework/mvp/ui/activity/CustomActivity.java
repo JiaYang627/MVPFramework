@@ -40,8 +40,8 @@ public class CustomActivity extends BaseActivity<CustomPresenter> implements Cus
 
     private String[] mStrings = new String[]{"SignLineView", "MoreLineView", "SignPointView", "MorePointView",
             "RectView", "RoundRectView", "CircleView", "OvalView", "ArcView", "RectContains", "LinePathView",
-            "ArcPathView", "AddArcPath", "AddRectPath", "AddRoundPath", "PathFillType", "SpiderGridView", "TextViewStyle",
-            "TextViewAlign"};
+            "ArcPathView", "AddArcPath", "AddRectPath", "AddRoundPath", "PathFillType", "SpiderGridView", "TextPaintStyle",
+            "TextViewAlign", "TextStyle"};
 
 
     private int[] mInts = new int[]{Constants.BASE_VIEW_SIGN_LINE, Constants.BASE_VIEW_MORE_LINE,
@@ -50,7 +50,8 @@ public class CustomActivity extends BaseActivity<CustomPresenter> implements Cus
             Constants.BASE_VIEW_CIRCLE, Constants.BASE_VIEW_OVAL, Constants.BASE_VIEW_ARC,
             Constants.BASE_VIEW_RECT_CONTAINS, Constants.BASE_VIEW_LINE_PATH, Constants.BASE_VIEW_ARC_PATH,
             Constants.BASE_VIEW_ADD_ARC_PATH, Constants.BASE_VIEW_ADD_RECT_PATH, Constants.BASE_VIEW_ADD_ROUND_RECT_PATH,
-            Constants.BASE_VIEW_PATH_FILL_TYPE, Constants.SPIDER_GRID, Constants.TEXT_VIEW_STYLE, Constants.TEXT_VIEW_ALIGN};
+            Constants.BASE_VIEW_PATH_FILL_TYPE, Constants.SPIDER_GRID, Constants.TEXT_VIEW_PAINT_STYLE, Constants.TEXT_VIEW_ALIGN,
+            Constants.TEXT_VIEW_STYLE};
 
 
     private BaseViewAdapter mAdapter;

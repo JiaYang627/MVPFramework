@@ -29,7 +29,8 @@ public class Constants {
     public static final int BASE_VIEW_ADD_ROUND_RECT_PATH = 15;
     public static final int BASE_VIEW_PATH_FILL_TYPE = 16;
     public static final int SPIDER_GRID = 17;
-    public static final int TEXT_VIEW_STYLE = 18;
+    public static final int TEXT_VIEW_PAINT_STYLE = 18;
     public static final int TEXT_VIEW_ALIGN = 19;
+    public static final int TEXT_VIEW_STYLE = 20;
 
 }
