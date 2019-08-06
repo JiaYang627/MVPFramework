@@ -92,7 +92,6 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
                     public void onClick(View v) {
 
                         goToActivity(mClasses[item.mInt]);
-                        //                        ToastUtilsBlankJ.showShort("测试");
 
                     }
                 });
@@ -116,20 +115,6 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
     }
 
     private void checkPermission() {
-//        PermissionUtils.requestPermissions(this, Constants.PERMISSION_REQUEST_CODE, permissions, new PermissionUtils.OnPermissionListener() {
-//            @Override
-//            public void onPermissionGranted(List<String> granted) {
-//                DialogUtils.dismissDialogRequestPermission();
-//                if (granted.size() == permissions.length) {
-//                    //                    mPresenter.getHomeInfo();     再次请求数据
-//                }
-//            }
-//
-//            @Override
-//            public void onPermissionDenied(List<String> denied) {
-//                DialogUtils.showDialogRequestPermission(MainActivity.this);
-//            }
-//        });
 
         mPermissDis = new RxPermissions(this)
                 .request( Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE,
