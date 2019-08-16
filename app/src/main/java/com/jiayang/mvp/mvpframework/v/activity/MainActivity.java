@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.jiayang.commonlibs.commonListAdapter.BaseAdapterHelper;
 import com.jiayang.commonlibs.commonListAdapter.QuickAdapter;
@@ -35,8 +36,10 @@ import io.reactivex.functions.Consumer;
 
 public class MainActivity extends BaseActivity<MainActivityPst> implements MainActivityViewIpm {
 
+    @BindView(R.id.textHookTextView)
+    TextView textHookTextView;
     private String[] strings = new String[]{"NumAnim", "TimeSelect",
-            "ChangeBaseUrl", "ZXing", "Spannable","CustomView"};
+            "ChangeBaseUrl", "ZXing", "Spannable", "CustomView"};
 
     private final Class<?>[] mClasses = {NumAnimActivity.class, TimeSelectActivity.class,
             ChangeBaseUrlActivity.class, ZXingActivity.class, SpannableActivity.class, CustomActivity.class};
@@ -47,7 +50,7 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
 
     //必须的权限 预防6.0动态权限   此处模拟 两个权限
     public String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE,
-            Manifest.permission.CALL_PHONE,Manifest.permission.CAMERA};
+            Manifest.permission.CALL_PHONE, Manifest.permission.CAMERA};
     @BindView(R.id.listView)
     ListView listView;
     private long mExitTime;
@@ -76,6 +79,7 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
         initAdapter();
         listView.setAdapter(mAdapter);
     }
+
 
     private void initAdapter() {
         for (int i = 0; i < strings.length; i++) {
@@ -117,7 +121,7 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
     private void checkPermission() {
 
         mPermissDis = new RxPermissions(this)
-                .request( Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE,
+                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE,
                         Manifest.permission.CAMERA, Manifest.permission.CALL_PHONE)
                 .subscribe(new Consumer<Boolean>() {
                     @Override
@@ -132,7 +136,6 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
     }
 
 
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -143,7 +146,7 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
                 return true;
             } else {
                 finish();
-//                android.os.Process.killProcess(android.os.Process.myPid());
+                //                android.os.Process.killProcess(android.os.Process.myPid());
             }
         }
         return true;
@@ -155,5 +158,13 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
         if (mPermissDis != null) {
             mPermissDis.dispose();
         }
+    }
+
+    public void testHook(View view) {
+        settext("没有被修改");
+    }
+
+    private void settext(String s) {
+        textHookTextView.setText(s);
     }
 }

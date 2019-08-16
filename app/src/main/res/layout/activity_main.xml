@@ -7,6 +7,23 @@
     android:orientation="vertical"
     tools:context="com.jiayang.mvp.mvpframework.v.activity.MainActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="测试XposedHook"
+            android:id="@+id/testHookButton"
+            android:onClick="testHook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/textHookTextView"
+            android:text="helloworld"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
     <ListView
         android:id="@+id/listView"
         android:scrollbars="none"
