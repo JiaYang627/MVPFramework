@@ -5,15 +5,17 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.jiayang.commonlibs.commonListAdapter.BaseAdapterHelper;
-import com.jiayang.commonlibs.commonListAdapter.QuickAdapter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.jiayang.mvp.mvpframework.R;
+import com.jiayang.mvp.mvpframework.adapter.DividerGridItemDecoration;
+import com.jiayang.mvp.mvpframework.adapter.MainActivityAdapter;
 import com.jiayang.mvp.mvpframework.bean.Model;
 import com.jiayang.mvp.mvpframework.common.BaseActivity;
 import com.jiayang.mvp.mvpframework.common.Constants;
@@ -25,6 +27,7 @@ import com.jiayang.mvp.mvpframework.p.MainActivityPst;
 import com.jiayang.mvp.mvpframework.utils.LogUtils;
 import com.jiayang.mvp.mvpframework.utils.ToastUtilsBlankJ;
 import com.jiayang.mvp.mvpframework.v.iview.MainActivityViewIpm;
+import com.jiayang.testso.MyJNI;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
@@ -38,23 +41,27 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
 
     @BindView(R.id.textHookTextView)
     TextView textHookTextView;
-    private String[] strings = new String[]{"NumAnim", "TimeSelect",
-            "ChangeBaseUrl", "ZXing", "Spannable", "CustomView"};
-
-    private final Class<?>[] mClasses = {NumAnimActivity.class, TimeSelectActivity.class,
-            ChangeBaseUrlActivity.class, ZXingActivity.class, SpannableActivity.class, CustomActivity.class};
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
 
 
-    private QuickAdapter<Model> mAdapter;
+
+
     private List<Model> mStringList = new ArrayList<>();
 
     //必须的权限 预防6.0动态权限   此处模拟 两个权限
     public String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE,
             Manifest.permission.CALL_PHONE, Manifest.permission.CAMERA};
-    @BindView(R.id.listView)
-    ListView listView;
     private long mExitTime;
     private Disposable mPermissDis;
+    private MainActivityAdapter mActivityAdapter;
+
+
+    private String[] strings = new String[]{"NumAnim", "TimeSelect",
+            "ChangeBaseUrl", "ZXing", "Spannable", "CustomView"};
+
+    private final Class<?>[] mClasses = {NumAnimActivity.class, TimeSelectActivity.class,
+            ChangeBaseUrlActivity.class, ZXingActivity.class, SpannableActivity.class, CustomActivity.class};
 
     @Override
     protected void inject(ApiComponent apiComponent) {
@@ -67,9 +74,13 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
     }
 
 
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkPermission();
@@ -77,7 +88,8 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
 
         LogUtils.e("JY");
         initAdapter();
-        listView.setAdapter(mAdapter);
+
+        LogUtils.e("调用so库的add方法" + MyJNI.add(10, 20));
     }
 
 
@@ -85,23 +97,20 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
         for (int i = 0; i < strings.length; i++) {
             mStringList.add(new Model(strings[i], i));
         }
-        mAdapter = new QuickAdapter<Model>(this, R.layout.item_adapter, mStringList) {
 
+        mActivityAdapter = new MainActivityAdapter(mStringList);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+        mRecyclerView.setAdapter(mActivityAdapter);
+        mRecyclerView.addItemDecoration(new DividerGridItemDecoration(this));
 
+        mActivityAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            protected void convert(BaseAdapterHelper helper, final Model item) {
-                helper.setText(R.id.item, item.mName);
-                helper.setOnClickListener(R.id.item, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
-                        goToActivity(mClasses[item.mInt]);
-
-                    }
-                });
+                Model item = (Model) adapter.getData().get(position);
+                goToActivity(mClasses[item.mInt]);
             }
-        };
-
+        });
     }
 
     private void goToActivity(Class activityClass) {
