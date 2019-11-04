@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
     <application
         android:name=".common.MVPApp"
         android:allowBackup="true"
@@ -20,18 +22,17 @@
         <activity
             android:name=".v.activity.MainActivity"
             android:launchMode="singleTask">
-
         </activity>
-        <activity android:name=".mvp.ui.activity.SplashActivity"
-                  android:theme="@style/SplashTheme"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".mvp.ui.activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity android:name=".v.activity.TestActivity"/>
         <activity
             android:name=".v.activity.NumAnimActivity"
@@ -58,9 +59,11 @@
         <activity
             android:name=".mvp.ui.activity.SpannableActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".mvp.ui.activity.CustomActivity"
+        <activity
+            android:name=".mvp.ui.activity.CustomActivity"
             android:screenOrientation="portrait"/>
-
+        <activity android:name=".mvp.ui.activity.VideoPlayerActivity">
+        </activity>
     </application>
 
 </manifest>

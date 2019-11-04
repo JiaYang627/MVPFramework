@@ -4,6 +4,7 @@ import com.jiayang.mvp.mvpframework.m.model.ApiModule;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.CustomActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.SpannableActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.SplashActivity;
+import com.jiayang.mvp.mvpframework.mvp.ui.activity.VideoPlayerActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.ZXingActivity;
 import com.jiayang.mvp.mvpframework.v.activity.ChangeBaseUrlActivity;
 import com.jiayang.mvp.mvpframework.v.activity.MainActivity;
@@ -38,4 +39,6 @@ public interface ApiComponent {
     void inject(CustomActivity customActivity);
 
     void inject(SplashActivity splashActivity);
+
+    void inject(VideoPlayerActivity videoPlayerActivity);
 }
