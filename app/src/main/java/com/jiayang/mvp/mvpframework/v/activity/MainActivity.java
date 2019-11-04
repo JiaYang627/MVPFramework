@@ -2,11 +2,8 @@ package com.jiayang.mvp.mvpframework.v.activity;
 
 import android.Manifest;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -175,33 +172,9 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
     }
 
     public void testHook(View view) {
-//        settext("没有被修改");
-        Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
-        startActivityForResult(intent, 100);
+        settext("没有被修改");
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case 100:
-                try {
-                    Uri uri = data.getData();
-                    String filePath = getAudioFilePathFromUri(uri);
-                    LogUtils.e("文件路径："+filePath);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-                break;
-        }
-    }
-
-    private String getAudioFilePathFromUri(Uri uri) {
-        Cursor cursor = getContentResolver()
-                .query(uri, null, null, null, null);
-        cursor.moveToFirst();
-        int index = cursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA);
-        return cursor.getString(index);
-    }
     private void settext(String s) {
         textHookTextView.setText(s);
     }
