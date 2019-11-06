@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_bg_rect_plat_white_4r"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="我们的应用需要您授权修改系统设置的权限,请点击确认确认开启"
+        android:textColor="#333333"
+        android:textSize="16sp"/>
+
+
+    <View
+        android:background="#e6e6e6"
+        android:layout_height="1dp"
+        android:layout_width="match_parent"/>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/cancelTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="取消"
+            android:textColor="#333333"
+            android:textSize="16sp"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#e0e0e0"/>
+
+        <TextView
+            android:id="@+id/confirmTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="确认"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

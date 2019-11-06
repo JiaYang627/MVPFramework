@@ -62,8 +62,13 @@ dependencies {
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
-    implementation 'jp.wasabeef:glide-transformations:2.0.1'
+    implementation 'jp.wasabeef:glide-transformations:3.0.1'
 
     //完整版引入  https://github.com/CarGuo/GSYVideoPlayer
     implementation 'com.shuyu:GSYVideoPlayer:6.0.3'
+
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.4'
+    //调用系统录音
+    implementation 'com.github.zhaolewei:ZlwAudioRecorder:v1.07'
+    implementation 'com.github.microshow:RxFFmpeg:2.1.0'
 }

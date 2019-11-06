@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.jiayang.mvp.mvpframework.R;
 import com.jiayang.mvp.mvpframework.common.BaseActivity;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
@@ -68,14 +69,21 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
         spannableString.setSpan(new TypefaceSpan("serif"), 0, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         spannableString.setSpan(new StyleSpan(android.graphics.Typeface.ITALIC), 0, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         mTextView.setText(spannableString);
-
-
-        Glide.with(this)
+        RequestOptions options = new RequestOptions();
+        options.placeholder(R.mipmap.icon_logo);
+        options.fitCenter();
+        Glide.with(context)
                 .load(R.mipmap.icon_logo)
-                .crossFade()
-                .fitCenter()
-                .bitmapTransform(new BlurTransformation(this,10,1)) // “23”：设置模糊度(在0.0到25.0之间)，默认”25";"4":图片缩放比例,默认“1”。
+                .apply(options)
+                .apply(RequestOptions.bitmapTransform(new BlurTransformation(10,1)))
                 .into(mBackgroundImageView);
+
+//        Glide.with(this)
+//                .load(R.mipmap.icon_logo)
+//                .crossFade()
+//                .fitCenter()
+//                .bitmapTransform(new BlurTransformation(this,10,1)) // “23”：设置模糊度(在0.0到25.0之间)，默认”25";"4":图片缩放比例,默认“1”。
+//                .into(mBackgroundImageView);
     }
 
     private void AnimatorAndGoToOther() {

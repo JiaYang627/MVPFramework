@@ -21,6 +21,7 @@ import com.jiayang.mvp.mvpframework.common.BaseActivity;
 import com.jiayang.mvp.mvpframework.common.Constants;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.CustomActivity;
+import com.jiayang.mvp.mvpframework.mvp.ui.activity.SimpleFFmpegActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.SpannableActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.VideoPlayerActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.ZXingActivity;
@@ -59,10 +60,11 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
 
 
     private String[] strings = new String[]{"NumAnim", "TimeSelect",
-            "ChangeBaseUrl", "ZXing", "Spannable", "CustomView","VideoPlayer"};
+            "ChangeBaseUrl", "ZXing", "Spannable", "CustomView","VideoPlayer","SimpleFFmpeg"};
 
     private final Class<?>[] mClasses = {NumAnimActivity.class, TimeSelectActivity.class,
-            ChangeBaseUrlActivity.class, ZXingActivity.class, SpannableActivity.class, CustomActivity.class, VideoPlayerActivity.class};
+            ChangeBaseUrlActivity.class, ZXingActivity.class, SpannableActivity.class, CustomActivity.class, VideoPlayerActivity.class,
+            SimpleFFmpegActivity.class};
     private final int RECORD_AUDIO = 100;
 
     @Override
@@ -133,7 +135,8 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
 
         mPermissDis = new RxPermissions(this)
                 .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE,
-                        Manifest.permission.CAMERA, Manifest.permission.CALL_PHONE)
+                        Manifest.permission.CAMERA, Manifest.permission.CALL_PHONE ,Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.MODIFY_AUDIO_SETTINGS)
                 .subscribe(new Consumer<Boolean>() {
                     @Override
                     public void accept(Boolean aBoolean) throws Exception {

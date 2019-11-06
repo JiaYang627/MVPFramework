@@ -2,6 +2,7 @@ package com.jiayang.mvp.mvpframework.m.component;
 
 import com.jiayang.mvp.mvpframework.m.model.ApiModule;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.CustomActivity;
+import com.jiayang.mvp.mvpframework.mvp.ui.activity.SimpleFFmpegActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.SpannableActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.SplashActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.VideoPlayerActivity;
@@ -41,4 +42,6 @@ public interface ApiComponent {
     void inject(SplashActivity splashActivity);
 
     void inject(VideoPlayerActivity videoPlayerActivity);
+
+    void inject(SimpleFFmpegActivity simpleFFmpegActivity);
 }

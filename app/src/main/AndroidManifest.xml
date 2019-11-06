@@ -9,8 +9,17 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
-
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-feature android:name="android.hardware.camera"/>
+
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+
+    <!-- 录音需要的权限  上面  RECORD_AUDIO 已有-->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <application
         android:name=".common.MVPApp"
@@ -63,6 +72,8 @@
             android:name=".mvp.ui.activity.CustomActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".mvp.ui.activity.VideoPlayerActivity">
+        </activity>
+        <activity android:name=".mvp.ui.activity.SimpleFFmpegActivity">
         </activity>
     </application>
 
