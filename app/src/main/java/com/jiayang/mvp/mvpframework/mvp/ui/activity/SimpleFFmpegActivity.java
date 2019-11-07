@@ -147,10 +147,10 @@ public class SimpleFFmpegActivity extends BaseActivity<SimpleFFmpegPresenter> im
                 }
 
                 LogUtils.e("JY  视频播放长度为:"+ mDuration);
-//                Intent intent = new Intent(this, MakeVideo1Activity.class);
-//                intent.putExtra("time", mDuration);
-//                intent.putExtra("path", localMedia.getPath());
-//                startActivity(intent);
+                Intent intent = new Intent(this, ComposeVideoAndAudioActivity.class);
+                intent.putExtra("time", mDuration);
+                intent.putExtra("path", localMedia.getPath());
+                startActivity(intent);
             }
         } else if (requestCode == REQUEST_CODE_WRITE_SETTINGS) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
