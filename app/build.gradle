@@ -70,5 +70,11 @@ dependencies {
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.4'
     //调用系统录音
     implementation 'com.github.zhaolewei:ZlwAudioRecorder:v1.07'
-    implementation 'com.github.microshow:RxFFmpeg:2.1.0'
+//    implementation 'com.github.microshow:RxFFmpeg:2.1.0'
+
+    // add for room
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    // room 配合 RxJava
+    implementation "android.arch.persistence.room:rxjava2:1.1.1"
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="Room数据库的简单操作 具体需求具体操作\n"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button_add_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加User记录"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/button_get_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="查询User记录"
+        android:textAllCaps="false" />
+    <Button
+        android:id="@+id/button_del_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="删除一条User记录"
+        android:textAllCaps="false" />
+    <Button
+        android:id="@+id/button_del_all_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="删除全部User记录"
+        android:textAllCaps="false" />
+
+</LinearLayout>

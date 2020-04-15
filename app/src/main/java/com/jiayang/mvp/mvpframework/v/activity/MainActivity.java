@@ -21,6 +21,7 @@ import com.jiayang.mvp.mvpframework.common.BaseActivity;
 import com.jiayang.mvp.mvpframework.common.Constants;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.CustomActivity;
+import com.jiayang.mvp.mvpframework.mvp.ui.activity.RoomDbActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.SimpleFFmpegActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.SpannableActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.VideoPlayerActivity;
@@ -60,11 +61,11 @@ public class MainActivity extends BaseActivity<MainActivityPst> implements MainA
 
 
     private String[] strings = new String[]{"NumAnim", "TimeSelect",
-            "ChangeBaseUrl", "ZXing", "Spannable", "CustomView","VideoPlayer","SimpleFFmpeg"};
+            "ChangeBaseUrl", "ZXing", "Spannable", "CustomView","VideoPlayer","SimpleFFmpeg","RoomDB"};
 
     private final Class<?>[] mClasses = {NumAnimActivity.class, TimeSelectActivity.class,
             ChangeBaseUrlActivity.class, ZXingActivity.class, SpannableActivity.class, CustomActivity.class, VideoPlayerActivity.class,
-            SimpleFFmpegActivity.class};
+            SimpleFFmpegActivity.class , RoomDbActivity.class};
     private final int RECORD_AUDIO = 100;
 
     @Override

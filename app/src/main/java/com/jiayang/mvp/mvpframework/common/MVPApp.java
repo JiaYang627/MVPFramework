@@ -2,6 +2,7 @@ package com.jiayang.mvp.mvpframework.common;
 
 import android.app.Application;
 
+import com.jiayang.mvp.mvpframework.database.AppDatabase;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
 
 /**
@@ -19,6 +20,9 @@ public class MVPApp extends Application {
         mvpAppDeletage.onCreate();
     }
 
+    public AppDatabase getAppDataBase() {
+        return mvpAppDeletage.getAppDatabase();
+    }
     @Override
     public void onTerminate() {
         super.onTerminate();
