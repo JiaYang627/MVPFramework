@@ -9,6 +9,7 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         ndk {
@@ -63,6 +64,8 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
     implementation 'jp.wasabeef:glide-transformations:3.0.1'
+    // 分包
+    implementation 'com.android.support:multidex:1.0.1'
 
     //完整版引入  https://github.com/CarGuo/GSYVideoPlayer
     implementation 'com.shuyu:GSYVideoPlayer:6.0.3'

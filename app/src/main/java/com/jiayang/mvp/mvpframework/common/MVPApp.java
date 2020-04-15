@@ -1,6 +1,8 @@
 package com.jiayang.mvp.mvpframework.common;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.jiayang.mvp.mvpframework.database.AppDatabase;
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent;
@@ -19,6 +21,12 @@ public class MVPApp extends Application {
         mvpAppDeletage = new MVPAppDelegate(this);
         mvpAppDeletage.onCreate();
     }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
 
     public AppDatabase getAppDataBase() {
         return mvpAppDeletage.getAppDatabase();
