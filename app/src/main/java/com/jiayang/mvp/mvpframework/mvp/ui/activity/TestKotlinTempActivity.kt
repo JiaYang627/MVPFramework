@@ -1,6 +1,7 @@
 package com.jiayang.mvp.mvpframework.mvp.ui.activity
 
 
+import android.os.Bundle
 import com.jiayang.mvp.mvpframework.R
 import com.jiayang.mvp.mvpframework.common.BaseActivity
 import com.jiayang.mvp.mvpframework.m.component.ApiComponent
@@ -16,4 +17,8 @@ class TestKotlinTempActivity : BaseActivity<TestKotlinTempPresenter>(), TestKotl
     override fun getLayoutId() = R.layout.activity_test_kotlin_temp;
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 }
