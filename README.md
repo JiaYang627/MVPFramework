@@ -27,3 +27,4 @@
         * 如果是在子目录下使用模板，创建出来的Act 页面 R文件导包会报错，删除错误的导包，自动重新导包即可。
         * 在使用 模板 MVPFrameworkTemplate创建 页面后，**只需要把 m文件夹下的 ApiComponent 以及 BaseActivity、BasePresenter、BaseViewIpm等 common 下使用到的Base相关类 导包删除 重新导包即可。**
     * 使用模板创建时 需要注意：Activity 可以和 Fragment 同时创建，但 二者不可同时与 LazyFragment 同时创建(Fragment 和 LazyFragment 两者已做成相对关系，主要就是 Activity 不可以和 LazyFragment 同时创建)
+    * 2020-04-17 增加 Activity 页面的 Kotlin 版本，Fragment 相关还未增加

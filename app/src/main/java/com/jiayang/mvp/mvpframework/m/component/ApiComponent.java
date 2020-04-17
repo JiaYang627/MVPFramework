@@ -7,6 +7,7 @@ import com.jiayang.mvp.mvpframework.mvp.ui.activity.RoomDbActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.SimpleFFmpegActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.SpannableActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.SplashActivity;
+import com.jiayang.mvp.mvpframework.mvp.ui.activity.TestKotlinTempActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.VideoPlayerActivity;
 import com.jiayang.mvp.mvpframework.mvp.ui.activity.ZXingActivity;
 import com.jiayang.mvp.mvpframework.v.activity.ChangeBaseUrlActivity;
@@ -50,4 +51,6 @@ public interface ApiComponent {
     void inject(ComposeVideoAndAudioActivity composeVideoAndAudioActivity);
 
     void inject(RoomDbActivity roomDbActivity);
+
+    void inject(TestKotlinTempActivity testKotlinTempActivity);
 }

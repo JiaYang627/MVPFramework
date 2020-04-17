@@ -26,10 +26,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mvp.ui.activity.RoomDbActivity"></activity>
+        <activity android:name=".mvp.ui.activity.TestKotlinTempActivity" />
+        <activity android:name=".mvp.ui.activity.RoomDbActivity" />
         <activity
             android:name=".v.activity.MainActivity"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask" />
         <activity
             android:name=".mvp.ui.activity.SplashActivity"
             android:screenOrientation="portrait"
@@ -50,7 +51,7 @@
         <activity
             android:name=".v.activity.ChangeBaseUrlActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".mvp.ui.activity.ZXingActivity"></activity>
+        <activity android:name=".mvp.ui.activity.ZXingActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -68,9 +69,9 @@
         <activity
             android:name=".mvp.ui.activity.CustomActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".mvp.ui.activity.VideoPlayerActivity"></activity>
-        <activity android:name=".mvp.ui.activity.SimpleFFmpegActivity"></activity>
-        <activity android:name=".mvp.ui.activity.ComposeVideoAndAudioActivity"></activity>
+        <activity android:name=".mvp.ui.activity.VideoPlayerActivity" />
+        <activity android:name=".mvp.ui.activity.SimpleFFmpegActivity" />
+        <activity android:name=".mvp.ui.activity.ComposeVideoAndAudioActivity" />
     </application>
 
 </manifest>
